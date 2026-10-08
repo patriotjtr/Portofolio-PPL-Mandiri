@@ -1,740 +1,1068 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio PPG Calon Guru IPS 2026 - Patriot Jiwo Tri Rahman</title>
-    <!-- FontAwesome & Google Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <style>
-        :root {
-            --primary-blue: #0056b3;
-            --accent-blue: #00a8ff;
-            --bg-light-blue: #f0f7ff;
-            --card-bg: #ffffff;
-            --text-dark: #2c3e50;
-            --text-muted: #6c757d;
-            --shadow: 0 10px 30px rgba(0, 86, 179, 0.08);
-            --transition: all 0.3s ease;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio PPG Calon Guru IPS 2026 - Patriot Jiwo Tri Rahman</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Chart.js CDN for Evaluation Graph -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Custom Styling for Soft Blue Elegance & Theme -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              200: '#bae0fd',
+              500: '#3b82f6',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-light-blue);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* Navbar */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            z-index: 1000;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--primary-blue);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 15px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 0.9rem;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            background: var(--primary-blue);
-            color: white;
-        }
-
-        /* Main Content Container */
-        .container {
-            margin-top: 80px;
-            padding: 2rem 5%;
-            min-height: calc(100vh - 160px);
-        }
-
-        .page-section {
-            display: none;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-
-        .page-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Hero / Beranda */
-        .hero-banner {
-            position: relative;
-            background: linear-gradient(rgba(0, 40, 85, 0.75), rgba(0, 40, 85, 0.75)), url('https://uny.ac.id/sites/default/files/2024-02/Kumbara%20Rektorat%20UNY_0.jpg');
-            background-size: cover;
-            background-position: center;
-            border-radius: 24px;
-            padding: 4rem 2rem;
-            color: white;
-            text-align: center;
-            margin-bottom: 3rem;
-            box-shadow: var(--shadow);
-        }
-
-        .hero-banner h1 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
-        .hero-banner p { font-size: 1.1rem; max-width: 800px; margin: 0 auto; opacity: 0.95; }
-
-        /* Grid Navigasi Utama (6 Ikon) */
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .nav-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-
-        .nav-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-blue);
-        }
-
-        .nav-card i {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-        }
-
-        .nav-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-        .nav-card p { font-size: 0.85rem; color: var(--text-muted); }
-
-        /* Profil Section & 3D Effect */
-        .profile-container {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .profile-card-3d {
-            position: relative;
-            background: white;
-            border-radius: 24px;
-            padding: 2rem 1.5rem 1.5rem;
-            margin-top: 80px; /* Space for 3D overlap */
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-
-        .profile-img-3d {
-            position: absolute;
-            top: -90px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: auto;
-            filter: drop-shadow(0 15px 15px rgba(0,0,0,0.15));
-            transition: var(--transition);
-        }
-
-        .profile-card-3d:hover .profile-img-3d {
-            transform: translateX(-50%) scale(1.05);
-        }
-
-        .profile-info { margin-top: 100px; }
-
-        /* Content Styling */
-        .card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow);
-        }
-
-        .card h2, .card h3 { color: var(--primary-blue); margin-bottom: 1rem; }
-        
-        .quote-box {
-            background: #eef6ff;
-            border-left: 4px solid var(--primary-blue);
-            padding: 1.5rem;
-            border-radius: 0 12px 12px 0;
-            margin: 1.5rem 0;
-            font-style: italic;
-        }
-
-        /* Tab sub-siklus */
-        .tab-menu {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-
-        .tab-btn {
-            padding: 10px 20px;
-            background: #e0edff;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            color: var(--primary-blue);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .tab-btn.active, .tab-btn:hover {
-            background: var(--primary-blue);
-            color: white;
-        }
-
-        /* Buttons & Links */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: var(--primary-blue);
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: var(--transition);
-            margin: 5px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover { background: #003e82; }
-        .btn-outline { background: transparent; border: 2px solid var(--primary-blue); color: var(--primary-blue); }
-        .btn-outline:hover { background: var(--primary-blue); color: white; }
-
-        /* Tables & Lists */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-
-        table th, table td {
-            padding: 12px;
-            border: 1px solid #deebff;
-            text-align: left;
-        }
-
-        table th { background: #eef6ff; color: var(--primary-blue); }
-
-        ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
-
-        /* Responsive Design */
-        @media (max-width: 900px) {
-            .profile-container { grid-template-columns: 1fr; }
-            .nav-links { display: none; } /* Simplified for demo */
-        }
-    </style>
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #f4f8fc;
+      color: #1e293b;
+    }
+    .hero-bg {
+      background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(30, 58, 138, 0.85)), 
+                  url('https://uny.ac.id/sites/default/files/2024-02/Kumbara%20Rektorat%20UNY_0.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .tab-btn.active {
+      background-color: #3b82f6;
+      color: white;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+    }
+  </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between">
 
-    <!-- Navigasi Atas -->
-    <nav>
-        <div class="logo">
-            <i class="fas fa-graduation-cap"></i>
-            <span>PPG IPS 2026</span>
+  <!-- NAVIGATION BAR -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-filter blur-md border-b border-blue-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('beranda')">
+          <div class="w-10 h-10 rounded-xl bg-brand-700 text-white flex items-center justify-center font-bold text-xl shadow-md">
+            PJT
+          </div>
+          <div>
+            <h1 class="font-bold text-lg text-slate-800 leading-tight">Patriot Jiwo Tri Rahman</h1>
+            <p class="text-xs text-brand-700 font-semibold tracking-wide">PPG Calon Guru IPS UNY 2026</p>
+          </div>
         </div>
-        <ul class="nav-links">
-            <li><a class="nav-item active" onclick="showSection('beranda')">Beranda</a></li>
-            <li><a class="nav-item" onclick="showSection('profil')">Profil</a></li>
-            <li><a class="nav-item" onclick="showSection('pembelajaran')">Pembelajaran</a></li>
-            <li><a class="nav-item" onclick="showSection('artefak')">Artefak</a></li>
-            <li><a class="nav-item" onclick="showSection('refleksi')">Refleksi & Penilaian</a></li>
-            <li><a class="nav-item" onclick="showSection('uts-uas')">UTS & UAS</a></li>
-            <li><a class="nav-item" onclick="showSection('non-mengajar')">Non-Mengajar</a></li>
-        </ul>
-    </nav>
 
-    <div class="container">
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-1 lg:space-x-2">
+          <button onclick="navigateTo('beranda')" id="nav-beranda" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition text-slate-700 hover:text-brand-700 hover:bg-blue-50">Beranda</button>
+          <button onclick="navigateTo('profil')" id="nav-profil" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition text-slate-700 hover:text-brand-700 hover:bg-blue-50">Profil Mahasiswa</button>
+          <button onclick="navigateTo('pembelajaran')" id="nav-pembelajaran" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition text-slate-700 hover:text-brand-700 hover:bg-blue-50">Pembelajaran</button>
+          <button onclick="navigateTo('artefak')" id="nav-artefak" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition text-slate-700 hover:text-brand-700 hover:bg-blue-50">Artefak</button>
+          <button onclick="navigateTo('refleksi')" id="nav-refleksi" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition text-slate-700 hover:text-brand-700 hover:bg-blue-50">Refleksi & Penilaian</button>
+          <button onclick="navigateTo('uts-uas')" id="nav-uts-uas" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition text-slate-700 hover:text-brand-700 hover:bg-blue-50">UTS & UAS</button>
+          <button onclick="navigateTo('non-mengajar')" id="nav-non-mengajar" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition text-slate-700 hover:text-brand-700 hover:bg-blue-50">Non-Mengajar</button>
+        </nav>
 
-        <!-- ==================== BERANDA ==================== -->
-        <section id="beranda" class="page-section active">
-            <div class="hero-banner">
-                <h1>Praktik Pengalaman Lapangan (PPL) - Mandiri</h1>
-                <h3>SMP Negeri 5 Yogyakarta</h3>
-                <p style="margin-top: 15px;">
-                    Selamat datang di portofolio digital <strong>Patriot Jiwo Tri Rahman</strong>, Mahasiswa Program Pendidikan Profesi Guru (PPG) Calon Guru Program Studi Pendidikan IPS, Universitas Negeri Yogyakarta Tahun 2026.
-                </p>
-            </div>
-
-            <h2 style="margin-bottom: 1.5rem; text-align: center; color: var(--primary-blue);">Menu Portofolio Utama</h2>
-            
-            <div class="nav-grid">
-                <div class="nav-card" onclick="showSection('profil')">
-                    <i class="fas fa-user-tie"></i>
-                    <h3>Profil Mahasiswa</h3>
-                    <p>Informasi identitas, latar belakang, filosofi, dan tujuan sebagai guru profesional.</p>
-                </div>
-                <div class="nav-card" onclick="showSection('pembelajaran')">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    <h3>Pembelajaran</h3>
-                    <p>1 Siklus Terbimbing & 4 Siklus Mandiri laporan praktik mengajar lengkap.</p>
-                </div>
-                <div class="nav-card" onclick="showSection('artefak')">
-                    <i class="fas fa-folder-open"></i>
-                    <h3>Artefak</h3>
-                    <p>Kumpulan dokumen LKPD, PPT Interaktif, RPM, dan Dokumentasi Praktik.</p>
-                </div>
-                <div class="nav-card" onclick="showSection('refleksi')">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Refleksi & Penilaian</h3>
-                    <p>Evaluasi DPL/Guru Pamong, grafik perkembangan nilai, dan catatan reflektif.</p>
-                </div>
-                <div class="nav-card" onclick="showSection('uts-uas')">
-                    <i class="fas fa-video"></i>
-                    <h3>UTS & UAS</h3>
-                    <p>Video praktik pembelajaran terbaik beserta perangkat lengkapnya.</p>
-                </div>
-                <div class="nav-card" onclick="showSection('non-mengajar')">
-                    <i class="fas fa-hands-helping"></i>
-                    <h3>Kegiatan Non-Mengajar</h3>
-                    <p>Piket sekolah, pembimbingan OSN IPS Juara Emas, AKM, & kegiatan budaya.</p>
-                </div>
-            </div>
-
-            <!-- Peta Lokasi -->
-            <div class="card">
-                <h2><i class="fas fa-map-marker-alt"></i> Lokasi PPL Terbimbing – PPG SMP Negeri 5 Yogyakarta</h2>
-                <p style="margin-bottom: 1rem;">Navigasi lokasi sekolah tempat pelaksanaan Praktik Pengalaman Lapangan:</p>
-                <div style="width: 100%; height: 350px; border-radius: 16px; overflow: hidden;">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.0366885368393!2d110.36835177484432!3d-7.785934992233633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a578330756e43%3A0xb3a8bb6199320e8b!2sSMP%20Negeri%205%20Yogyakarta!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-                <div style="text-align: right; margin-top: 10px;">
-                    <a href="https://maps.app.goo.gl/c7rsyxGhD6qNmKnJ8" target="_blank" class="btn"><i class="fas fa-external-link-alt"></i> Buka Google Maps</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== PROFIL MAHASISWA ==================== -->
-        <section id="profil" class="page-section">
-            <div class="profile-container">
-                <!-- Card Foto 3D Out of Frame -->
-                <div class="profile-card-3d">
-                    <!-- Foto 3D PNG Transparan -->
-                    <img src="profil OK.jpg" alt="Patriot Jiwo Tri Rahman" class="profile-img-3d">
-                    <div class="profile-info">
-                        <h3>Patriot Jiwo Tri Rahman</h3>
-                        <p style="color: var(--primary-blue); font-weight: 600;">NIM. 25105260451</p>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">PPG Calon Guru Pendidikan IPS 2026<br>Universitas Negeri Yogyakarta</p>
-                    </div>
-                </div>
-
-                <!-- Deskripsi Profil -->
-                <div>
-                    <div class="card">
-                        <h2>Sang Pewaris Dari Bumi Menoreh</h2>
-                        <div class="quote-box">
-                            “Desa mawa cara, negara mawa tata.”<br>
-                            <small>Setiap desa punya adat dan ceritanya sendiri — begitu pula Kulon Progo.</small>
-                        </div>
-                        <p>Saya Patriot Jiwo Tri Rahman jurusan Pendidikan IPS, Program Profesi Guru (Calon Guru) tahun 2026 berasal dari Kulon Progo. Nama itu sendiri sudah berbicara — kulon berarti barat, merujuk pada posisi wilayah ini di sebelah barat Sungai Progo. Cara leluhur menamai tanah ini mencerminkan kearifan yang sederhana: gunakan apa yang ada di sekitarmu sebagai penanda identitas.</p>
-                        <br>
-                        <p>Kulon Progo bukan sekadar hamparan Pegunungan Menoreh dan sawah di dataran rendahnya. Ini adalah tanah yang lahir dari sejarah panjang. Setelah Perang Diponegoro (1825–1830), wilayah ini terbentuk dari penyatuan empat kabupaten kecil — Pengasih, Sentolo, Nanggulan, dan Kalibawang — menjadi satu pada 1912. Di setiap desa, para pinisepuh menjaga babad: catatan asal-usul yang dituturkan turun-temurun, dari Gua Kiskendo di Menoreh hingga jejak perjuangan Sanoen di Sentolo.</p>
-                        <br>
-                        <p>Di sinilah saya belajar bahwa ilmu tidak hanya ada di buku. Ia juga hidup dalam cerita yang dituturkan di beranda rumah dan di depan makam leluhur. Semangat itulah yang saya bawa ke dalam kelas — bahwa IPS paling bermakna ketika berangkat dari tanah yang kita pijak sendiri.</p>
-                        
-                        <div class="quote-box">
-                            “Akar yang kuat tumbuh dari tanah yang penuh cerita.”<br>
-                            <strong>— Patriot Jiwo Tri Rahman, dari Bumi Menoreh</strong>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h2>Inspirasi & Tujuan</h2>
-                        <h3>Mengapa Memilih Jalan Menjadi Guru</h3>
-                        <p>Saya bercita-cita menjadi guru bukan semata karena profesi, tetapi karena satu keyakinan: perubahan paling tahan lama dimulai di dalam ruang kelas. Tumbuh di Kulon Progo, saya menyaksikan bagaimana guru-guru daerah dengan sumber daya terbatas mampu menyalakan harapan generasi muda. Pengalaman itu menumbuhkan tekad bahwa saya ingin menjadi bagian dari rantai perubahan itu — seorang pendidik yang tidak hanya menyampaikan materi, tetapi juga membantu peserta didik memahami relevansi ilmu dalam kehidupan nyata mereka.</p>
-                        <br>
-                        <p>Sebagai calon guru IPS, saya percaya bahwa ilmu sosial bukan sekadar hafalan fakta dan konsep — melainkan cermin untuk memahami diri, masyarakat, dan dunia. Tujuan saya adalah menjadi guru profesional yang kontekstual: guru yang mampu menjembatani teori dengan pengalaman hidup peserta didik, yang hadir tidak hanya sebagai pengajar tetapi juga sebagai pembimbing dan teladan.</p>
-                        
-                        <div class="quote-box">
-                            "Guru yang baik bukan yang memberikan jawaban, melainkan yang membantu murid menemukan keberanian untuk bertanya."<br>
-                            <strong>— Patriot Jiwo Tri Rahman</strong>
-                        </div>
-
-                        <h3>Misi Saya sebagai Guru</h3>
-                        <p>Mewujudkan pembelajaran IPS yang bermakna, kontekstual, dan memberdayakan — sehingga setiap peserta didik mampu memahami realitas sosialnya, berpikir kritis, dan tumbuh menjadi warga yang aktif dan bertanggung jawab.</p>
-                    </div>
-
-                    <div class="card">
-                        <h2>Kompetensi & Karakter Guru Profesional</h2>
-                        <h3>Kompetensi yang Ingin Dibangun:</h3>
-                        <ul>
-                            <li><strong>Pedagogik Kontekstual:</strong> Merancang pembelajaran yang relevan dengan kehidupan nyata peserta didik.</li>
-                            <li><strong>Diferensiasi Pembelajaran:</strong> Merespons keberagaman gaya belajar dan kebutuhan setiap murid.</li>
-                            <li><strong>Asesmen Formatif:</strong> Menggunakan data penilaian untuk memandu keputusan pembelajaran secara real-time.</li>
-                            <li><strong>Refleksi Berkelanjutan:</strong> Mengevaluasi praktik mengajar secara sistematis untuk terus berkembang.</li>
-                            <li><strong>Literasi Digital:</strong> Memanfaatkan teknologi secara kreatif dan kritis dalam proses pembelajaran.</li>
-                        </ul>
-
-                        <h3 style="margin-top: 1.5rem;">Karakter Guru Profesional:</h3>
-                        <ul>
-                            <li><strong>Sabar dan Hadir Sepenuhnya:</strong> Memberikan perhatian tulus pada setiap peserta didik.</li>
-                            <li><strong>Berani Berinovasi:</strong> Tidak takut mencoba metode baru, berani gagal, dan bangkit dengan strategi yang lebih baik.</li>
-                            <li><strong>Adil dan Inklusif:</strong> Memastikan setiap murid mendapat kesempatan belajar yang setara.</li>
-                            <li><strong>Kolaboratif:</strong> Terbuka bekerja sama dengan sesama guru, orang tua, dan komunitas.</li>
-                            <li><strong>Rendah Hati sebagai Pelajar Seumur Hidup:</strong> Menyadari bahwa menjadi guru terbaik adalah perjalanan.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== PEMBELAJARAN ==================== -->
-        <section id="pembelajaran" class="page-section">
-            <h2 style="margin-bottom: 1.5rem; color: var(--primary-blue);">Laporan Pelaksanaan Pembelajaran</h2>
-            
-            <div class="tab-menu">
-                <button class="tab-btn active" onclick="showSubTab('pemb-s1t', this)">Siklus 1 Terbimbing</button>
-                <button class="tab-btn" onclick="showSubTab('pemb-s1m', this)">Siklus 1 Mandiri</button>
-                <button class="tab-btn" onclick="showSubTab('pemb-s2m', this)">Siklus 2 Mandiri</button>
-                <button class="tab-btn" onclick="showSubTab('pemb-s3m', this)">Siklus 3 Mandiri</button>
-                <button class="tab-btn" onclick="showSubTab('pemb-s4m', this)">Siklus 4 Mandiri</button>
-            </div>
-
-            <!-- Siklus 1 Terbimbing -->
-            <div id="pemb-s1t" class="sub-tab-content active">
-                <div class="card">
-                    <h2>LAPORAN PRAKTIK MENGAJAR - SIKLUS 1 TERBIMBING</h2>
-                    <table>
-                        <tr><th>Nama</th><td>Patriot Jiwo Tri Rahman</td></tr>
-                        <tr><th>NIM</th><td>25105260451</td></tr>
-                        <tr><th>Sekolah PPL</th><td>SMP Negeri 5 Yogyakarta</td></tr>
-                        <tr><th>Materi</th><td>Pemanfaatan dan Pelestarian SDA Tambang</td></tr>
-                        <tr><th>Kelas/Fase</th><td>VIII / I / Ganjil – 2026/2027</td></tr>
-                    </table>
-                    <h3>A. Deskripsi Kegiatan</h3>
-                    <p>Kegiatan praktik mengajar terbimbing dilaksanakan di kelas VIII SMP Negeri 5 Yogyakarta pada mata pelajaran IPS dengan materi "Menjaga Bumi, Menjaga Kehidupan: Pemanfaatan dan Pelestarian Sumber Daya Alam Tambang". Pembelajaran dirancang 2 pertemuan (4x40 menit) menggunakan Problem Based Learning (PBL) berkerangka Universal Design for Learning (UDL) serta pendekatan Deep Learning...</p>
-                    <!-- Detail Lengkap disajikan selengkapnya sesuai input user -->
-                </div>
-            </div>
-
-            <!-- Siklus 1 Mandiri -->
-            <div id="pemb-s1m" class="sub-tab-content" style="display:none;">
-                <div class="card">
-                    <h2>LAPORAN PRAKTIK MENGAJAR - SIKLUS 1 MANDIRI</h2>
-                    <table>
-                        <tr><th>Materi</th><td>Potensi, Pemanfaatan, dan Pelestarian Sumber Daya Alam Indonesia</td></tr>
-                        <tr><th>Model</th><td>Split Bottle Challenge (SBC) + TaRL & CRT</td></tr>
-                    </table>
-                    <p>Kegiatan dilaksanakan dengan model inovatif Split Bottle Challenge (SBC) berbasis permainan fisik yang melatih kecakapan kolaboratif dan pengelolaan emosi...</p>
-                </div>
-            </div>
-
-            <!-- Siklus 2 Mandiri -->
-            <div id="pemb-s2m" class="sub-tab-content" style="display:none;">
-                <div class="card">
-                    <h2>LAPORAN PRAKTIK MENGAJAR - SIKLUS 2 MANDIRI</h2>
-                    <table>
-                        <tr><th>Materi</th><td>Sumber Daya Manusia dan Keberagaman Budaya (Perubahan Iklim)</td></tr>
-                        <tr><th>Model</th><td>PBL + Tangga Kemampuan (TaRL) + CRT (Ruang Budaya)</td></tr>
-                    </table>
-                    <p>Fokus materi “Bumi Memanas, Budaya Beradaptasi”. Menggunakan analisis CRT tiga ruang budaya lokal (Tugu Pagoda Wates, Kampung Ketandan, Klenteng Poncowinatan)...</p>
-                </div>
-            </div>
-
-            <!-- Siklus 3 Mandiri -->
-            <div id="pemb-s3m" class="sub-tab-content" style="display:none;">
-                <div class="card">
-                    <h2>LAPORAN PRAKTIK MENGAJAR - SIKLUS 3 MANDIRI</h2>
-                    <table>
-                        <tr><th>Materi</th><td>Dinamika Interaksi Sosial</td></tr>
-                        <tr><th>Model</th><td>Teams Games Tournament (TGT) + PBL</td></tr>
-                    </table>
-                    <p>Mengintegrasikan turnamen akademik TGT dengan Meja Turnamen berjenjang TaRL dan konteks kearifan lokal Yogyakarta (Pasar Beringharjo & Sekaten)...</p>
-                </div>
-            </div>
-
-            <!-- Siklus 4 Mandiri -->
-            <div id="pemb-s4m" class="sub-tab-content" style="display:none;">
-                <div class="card">
-                    <h2>LAPORAN PRAKTIK MENGAJAR - SIKLUS 4 MANDIRI</h2>
-                    <table>
-                        <tr><th>Materi</th><td>Konektivitas Antarruang</td></tr>
-                        <tr><th>Model</th><td>Game-Based Learning (Ruangopoly) + Make a Match</td></tr>
-                    </table>
-                    <p>Memanfaatkan gim papan interaktif Ruangopoly berbasis web serta aturan 'Rotasi Peran Wajib' dan 'Semua Suara' untuk meningkatkan keterlibatan siswa...</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== ARTEFAK ==================== -->
-        <section id="artefak" class="page-section">
-            <h2 style="margin-bottom: 1.5rem; color: var(--primary-blue);">Artefak Pembelajaran</h2>
-            
-            <div class="card">
-                <h3>Siklus 1 Praktik Mengajar Terbimbing (SDA)</h3>
-                <p>Dokumen pendukung pembelajaran dan analisis kelebihan/kelemahan desain:</p>
-                <div style="margin-top: 10px;">
-                    <a href="https://docs.google.com/presentation/d/1uhgts9vAC9U0YgLGIUKanvwO-nVWXnTI/edit" target="_blank" class="btn"><i class="fas fa-file-powerpoint"></i> Media PPT</a>
-                    <a href="https://drive.google.com/file/d/1FFTqnBXzlwZcxyT6WJu7_VBvB0EABq1s/view" target="_blank" class="btn btn-outline"><i class="fas fa-file-alt"></i> RPP / RPM</a>
-                    <a href="https://drive.google.com/file/d/1YeEty_railwbS_fJjpf4-Akt0bMRXwic/view" target="_blank" class="btn btn-outline"><i class="fas fa-images"></i> Dokumentasi</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>Siklus 1 Praktik Mengajar Mandiri (SDA & Budaya)</h3>
-                <div style="margin-top: 10px;">
-                    <a href="https://docs.google.com/presentation/d/1baSpragEflhRkp41eNR5KYVX3tw6yHMC/edit" target="_blank" class="btn"><i class="fas fa-file-powerpoint"></i> Media PPT</a>
-                    <a href="https://drive.google.com/file/d/1debFlM5o60pSBTsYiabl7dFopk_74v2z/view" target="_blank" class="btn btn-outline"><i class="fas fa-file-alt"></i> RPP / RPM</a>
-                    <a href="https://drive.google.com/file/d/11Rymo_TTD824kZjwjql4suBL9172JWx9/view" target="_blank" class="btn btn-outline"><i class="fas fa-images"></i> Dokumentasi</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>Siklus 2 Praktik Mengajar Mandiri (SDM)</h3>
-                <div style="margin-top: 10px;">
-                    <a href="https://docs.google.com/presentation/d/17Nm8-HeLvx_tHY38haeuaoF_IGTY4yvJ/edit" target="_blank" class="btn"><i class="fas fa-file-powerpoint"></i> Media PPT</a>
-                    <a href="https://drive.google.com/file/d/1uSbPdQ74Ua8saxMlDGpLXhMHAZam-S3r/view" target="_blank" class="btn btn-outline"><i class="fas fa-file-alt"></i> RPP / RPM</a>
-                    <a href="https://drive.google.com/file/d/1lmddKaPeU2eTFkK2iW3A2Xv27tfeHHJr/view" target="_blank" class="btn btn-outline"><i class="fas fa-images"></i> Dokumentasi</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>Siklus 3 Praktik Mengajar Mandiri (Interaksi Sosial)</h3>
-                <div style="margin-top: 10px;">
-                    <a href="https://docs.google.com/presentation/d/1q4U3JR8qTHIwvHopgXtkoZ2WoRwbb9My/edit" target="_blank" class="btn"><i class="fas fa-file-powerpoint"></i> Media PPT</a>
-                    <a href="https://drive.google.com/file/d/1STZtB88_ToQS6MAwOQRnXi2YubuBhI71/view" target="_blank" class="btn btn-outline"><i class="fas fa-file-alt"></i> RPP / RPM</a>
-                    <a href="https://drive.google.com/file/d/1prKPNI8gcPMFgXUQI8ycjP6-wQIZTUP_/view" target="_blank" class="btn btn-outline"><i class="fas fa-images"></i> Dokumentasi</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>Siklus 4 Praktik Mengajar Mandiri (Konektivitas Antarruang)</h3>
-                <div style="margin-top: 10px;">
-                    <a href="https://docs.google.com/presentation/d/1hVLYJwuRQw8S18QOg99pq9Bz7Bc_NGL4/edit" target="_blank" class="btn"><i class="fas fa-file-powerpoint"></i> Media PPT</a>
-                    <a href="https://drive.google.com/file/d/1i1DFK3oq0WQlVWdD8pUiDYQmZSfX85vt/view" target="_blank" class="btn btn-outline"><i class="fas fa-file-alt"></i> RPP / RPM</a>
-                    <a href="https://drive.google.com/file/d/1mDfqayN0cVWt0uU8qttRAB1IRjcpqTuX/view" target="_blank" class="btn btn-outline"><i class="fas fa-images"></i> Dokumentasi</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== REFLEKSI DAN PENILAIAN ==================== -->
-        <section id="refleksi" class="page-section">
-            <h2 style="margin-bottom: 1.5rem; color: var(--primary-blue);">Refleksi & Penilaian Komprehensif</h2>
-            
-            <div class="card">
-                <p>Laporan penilaian Praktik Mengajar dan Perangkat Pembelajaran dinilai oleh Guru Pamong (<strong>Dicky Muhammad Hidayat, S.Pd</strong>) dan Dosen Pembimbing Lapangan (<strong>Prof. Dr. Drs. Saliman, M.Pd.</strong>).</p>
-                
-                <h3 style="margin-top: 2rem;">Grafik Perkembangan Nilai Praktik Mengajar</h3>
-                <div style="max-width: 700px; margin: 2rem auto;">
-                    <canvas id="scoreChart"></canvas>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>Berkas Penilaian Guru Pamong</h3>
-                <ul>
-                    <li><strong>Siklus 1 Terbimbing:</strong> 
-                        <a href="https://drive.google.com/file/d/1TcgDBo6oAlzZapMAAVvaagBxIcXtBpxd/view" target="_blank">Perangkat</a> | 
-                        <a href="https://drive.google.com/file/d/1-dPnqrRgQFM3t02HTbws-TR-zzVOai5B/view" target="_blank">Praktik Mengajar</a>
-                    </li>
-                    <li><strong>Siklus 1 Mandiri:</strong> 
-                        <a href="https://drive.google.com/file/d/15GZilbc5NoVw9LVNr13D6Bq4PePS37XN/view" target="_blank">Perangkat</a> | 
-                        <a href="https://drive.google.com/file/d/1f1A2VL7XX1ncIT43DWH2K7G81CHnW4hO/view" target="_blank">Praktik Mengajar</a>
-                    </li>
-                    <li><strong>Siklus 2 Mandiri:</strong> 
-                        <a href="https://drive.google.com/file/d/1d_E0MXBIPhBCZd_KfhvpKNKHWFG5D_js/view" target="_blank">Perangkat</a> | 
-                        <a href="https://drive.google.com/file/d/1XzbW6qGW9DSRSVXy3B6HwKR2ugSx98LL/view" target="_blank">Praktik Mengajar</a>
-                    </li>
-                    <li><strong>Siklus 3 Mandiri:</strong> 
-                        <a href="https://drive.google.com/file/d/1dnEzGmVtTRsen3N1-gAzGizjc1kv8HaZ/view" target="_blank">Perangkat</a> | 
-                        <a href="https://drive.google.com/file/d/1SleXgpaLwYuHv-CgoR4l1fhScHduOksk/view" target="_blank">Praktik Mengajar</a>
-                    </li>
-                    <li><strong>Siklus 4 Mandiri:</strong> 
-                        <a href="https://drive.google.com/file/d/1viRy8ENO6xfnD70N4LDGpEb5ZjIUDe23/view" target="_blank">Perangkat</a> | 
-                        <a href="https://drive.google.com/file/d/1czuDMHWxvCZWb7_UiA2sWARYB3KS-JYl/view" target="_blank">Praktik Mengajar</a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- ==================== UTS DAN UAS ==================== -->
-        <section id="uts-uas" class="page-section">
-            <h2 style="margin-bottom: 1.5rem; color: var(--primary-blue);">Unjuk Kerja UTS & UAS</h2>
-            
-            <div class="tab-menu">
-                <button class="tab-btn active" onclick="showSubTab('uts-content', this)">Siklus Terbaik UTS</button>
-                <button class="tab-btn" onclick="showSubTab('uas-content', this)">Siklus Terbaik UAS</button>
-            </div>
-
-            <div id="uts-content" class="sub-tab-content active">
-                <div class="card">
-                    <h2>UTS: Siklus Terbaik (Sumber Daya Manusia)</h2>
-                    <p style="margin-bottom: 1rem;">Video Praktik Pembelajaran UTS:</p>
-                    <a href="https://drive.google.com/file/d/1w4Geh6p7x9hwCvX6b1gdMvqwNV5w-sUA/view" target="_blank" class="btn"><i class="fas fa-play-circle"></i> Tonton Video Pembelajaran UTS</a>
-                    
-                    <h3 style="margin-top: 1.5rem;">Artefak Perangkat UTS:</h3>
-                    <a href="https://docs.google.com/presentation/d/17Nm8-HeLvx_tHY38haeuaoF_IGTY4yvJ/edit" target="_blank" class="btn btn-outline">PPT Interaktif</a>
-                    <a href="https://drive.google.com/file/d/1uSbPdQ74Ua8saxMlDGpLXhMHAZam-S3r/view" target="_blank" class="btn btn-outline">RPP SDM</a>
-                    <a href="https://drive.google.com/file/d/1lmddKaPeU2eTFkK2iW3A2Xv27tfeHHJr/view" target="_blank" class="btn btn-outline">Dokumentasi</a>
-                </div>
-            </div>
-
-            <div id="uas-content" class="sub-tab-content" style="display:none;">
-                <div class="card">
-                    <h2>UAS: Siklus Terbaik (SDA & Budaya)</h2>
-                    <p style="margin-bottom: 1rem;">Video Praktik Pembelajaran UAS:</p>
-                    <a href="https://drive.google.com/file/d/1Jy7zga10BVXW584ra3WFP9rMiAOP9wcM/view" target="_blank" class="btn"><i class="fas fa-play-circle"></i> Tonton Video Pembelajaran UAS</a>
-                    
-                    <h3 style="margin-top: 1.5rem;">Artefak Perangkat UAS:</h3>
-                    <a href="https://docs.google.com/presentation/d/1baSpragEflhRkp41eNR5KYVX3tw6yHMC/edit" target="_blank" class="btn btn-outline">PPT Interaktif</a>
-                    <a href="https://drive.google.com/file/d/1debFlM5o60pSBTsYiabl7dFopk_74v2z/view" target="_blank" class="btn btn-outline">RPP SDA</a>
-                    <a href="https://drive.google.com/file/d/11Rymo_TTD824kZjwjql4suBL9172JWx9/view" target="_blank" class="btn btn-outline">Dokumentasi</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== NON-MENGAJAR ==================== -->
-        <section id="non-mengajar" class="page-section">
-            <h2 style="margin-bottom: 1.5rem; color: var(--primary-blue);">Laporan Kegiatan Non-Mengajar</h2>
-            
-            <div class="card">
-                <h2>Rincian Pelaksanaan Kegiatan</h2>
-                <p><strong>Alokasi Waktu:</strong> 2,5 Jam / Minggu</p>
-                <br>
-                <h3>1. Manajemen & Tata Kelola Sekolah (Piket Sekolah)</h3>
-                <ul>
-                    <li><strong>Piket Salam Pagi:</strong> Menyambut siswa di gerbang dengan penerapan budaya 5S.</li>
-                    <li><strong>Piket Absensi:</strong> Merekap presensi harian siswa setiap kelas.</li>
-                    <li><strong>Piket Aula:</strong> Menyiapkan dan mengondisikan tata tertib aula untuk peribadahan & rapat.</li>
-                </ul>
-
-                <h3 style="margin-top: 1rem;">2. Pembimbingan OSN IPS (Prestasi Nasional)</h3>
-                <p>Mendampingi siswi bimbingan <strong>Salsabila Yusrina Eljaudah</strong> yang berhasil meraih <strong>MEDALI EMAS OSN IPS Tingkat Nasional Tahun 2026</strong> dari Kemendikdasmen.</p>
-
-                <h3 style="margin-top: 1rem;">3. Partisipasi Kegiatan Kebudayaan & Keagamaan</h3>
-                <ul>
-                    <li>Peringatan HUT Kemerdekaan RI (Panitia Lomba)</li>
-                    <li>Pengajian Maulid Nabi Muhammad SAW</li>
-                    <li>Karnaval 270 Tahun Kota Jogja</li>
-                </ul>
-
-                <h3 style="margin-top: 1rem;">4. Pengawasan AKM</h3>
-                <p>Pengawas Asesmen Kendali Mutu (AKM) Semester Ganjil Tahun Ajaran 2026/2027.</p>
-
-                <div class="quote-box">
-                    <strong>Catatan Refleksi Diri:</strong><br>
-                    “Keterlibatan dalam kegiatan nonmengajar membuka wawasan bahwa peran seorang pendidik tidak terbatas di dalam ruang kelas semata. Menyambut siswa di pagi hari, mendampingi kompetensi bakat hingga juara nasional, serta berbaur dalam kegiatan budaya dan keagamaan merupakan fondasi penting dalam membangun hubungan emosional yang positif.”
-                </div>
-
-                <div style="margin-top: 1.5rem;">
-                    <a href="https://drive.google.com/file/d/155rQG0ooF2xLbAyvp77P-EyE4hquAttt/view" target="_blank" class="btn"><i class="fas fa-folder-open"></i> Lihat Dokumentasi Kegiatan Non-Mengajar</a>
-                </div>
-            </div>
-        </section>
-
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-brand-700 p-2">
+            <i class="fa-solid fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
     </div>
 
-    <!-- Script Navigasi SPA & Chart -->
-    <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.page-section').forEach(sec => {
-                sec.classList.remove('active');
-            });
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2">
+      <button onclick="navigateTo('beranda')" class="block w-full text-left px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-blue-50">Beranda</button>
+      <button onclick="navigateTo('profil')" class="block w-full text-left px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-blue-50">Profil Mahasiswa</button>
+      <button onclick="navigateTo('pembelajaran')" class="block w-full text-left px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-blue-50">Pembelajaran</button>
+      <button onclick="navigateTo('artefak')" class="block w-full text-left px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-blue-50">Artefak</button>
+      <button onclick="navigateTo('refleksi')" class="block w-full text-left px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-blue-50">Refleksi & Penilaian</button>
+      <button onclick="navigateTo('uts-uas')" class="block w-full text-left px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-blue-50">UTS & UAS</button>
+      <button onclick="navigateTo('non-mengajar')" class="block w-full text-left px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-blue-50">Kegiatan Non-Mengajar</button>
+    </div>
+  </header>
 
-            // Show selected section
-            document.getElementById(sectionId).classList.add('active');
+  <!-- MAIN CONTENT CONTAINER -->
+  <main id="main-content" class="flex-grow">
 
-            // Update active link nav
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.classList.remove('active');
-            });
+    <!-- ==================== 1. BERANDA ==================== -->
+    <section id="page-beranda" class="page-section">
+      <!-- Hero Section with UNY Background Image -->
+      <div class="hero-bg text-white py-24 md:py-32 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto text-center">
+          <span class="bg-blue-500/30 text-blue-200 text-xs sm:text-sm font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full border border-blue-400/30">
+            Portofolio Digital PPG Calon Guru Tahun 2026
+          </span>
+          <h2 class="mt-6 text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+            Praktik Pengalaman Lapangan (PPL) – Mandiri
+          </h2>
+          <p class="mt-4 text-xl sm:text-2xl font-light text-blue-100">
+            SMP Negeri 5 Yogyakarta
+          </p>
+          <div class="mt-6 max-w-3xl mx-auto text-slate-200 text-base sm:text-lg leading-relaxed">
+            Saya <strong class="text-white font-semibold">Patriot Jiwo Tri Rahman</strong>, Mahasiswa Program Studi Pendidikan IPS Universitas Negeri Yogyakarta, mempersembahkan portofolio komprehensif perjalanan pembelajaran struktural dan karya profesional dalam Program Pendidikan Profesi Guru (PPG Calon Guru) Tahun 2026.
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Icons Grid Section -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 mb-16 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Card 1 -->
+          <div onclick="navigateTo('profil')" class="glass-card p-6 rounded-2xl shadow-xl border border-blue-100 hover:shadow-2xl hover:-translate-y-1 transition duration-300 cursor-pointer group">
+            <div class="w-14 h-14 bg-blue-100 text-brand-700 rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:bg-brand-700 group-hover:text-white transition">
+              <i class="fa-solid fa-user-graduate"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800 group-hover:text-brand-700 transition">Profil Mahasiswa</h3>
+            <p class="mt-2 text-slate-600 text-sm leading-relaxed">Informasi lengkap tentang identitas, latar belakang pendidikan, filosofi, serta inspirasi dan tujuan sebagai pendidik profesional.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div onclick="navigateTo('pembelajaran')" class="glass-card p-6 rounded-2xl shadow-xl border border-blue-100 hover:shadow-2xl hover:-translate-y-1 transition duration-300 cursor-pointer group">
+            <div class="w-14 h-14 bg-blue-100 text-brand-700 rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:bg-brand-700 group-hover:text-white transition">
+              <i class="fa-solid fa-chalkboard-user"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800 group-hover:text-brand-700 transition">Pembelajaran</h3>
+            <p class="mt-2 text-slate-600 text-sm leading-relaxed">Perjalanan pembelajaran struktural 1 Siklus Terbimbing & 4 Siklus Mandiri dengan pencapaian yang berkelanjutan.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div onclick="navigateTo('artefak')" class="glass-card p-6 rounded-2xl shadow-xl border border-blue-100 hover:shadow-2xl hover:-translate-y-1 transition duration-300 cursor-pointer group">
+            <div class="w-14 h-14 bg-blue-100 text-brand-700 rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:bg-brand-700 group-hover:text-white transition">
+              <i class="fa-solid fa-folder-open"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800 group-hover:text-brand-700 transition">Artefak</h3>
+            <p class="mt-2 text-slate-600 text-sm leading-relaxed">Kumpulan karya dan dokumen pendukung pembelajaran meliputi LKPD, RPP/RPM, Media PPT, dan Dokumentasi.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div onclick="navigateTo('refleksi')" class="glass-card p-6 rounded-2xl shadow-xl border border-blue-100 hover:shadow-2xl hover:-translate-y-1 transition duration-300 cursor-pointer group">
+            <div class="w-14 h-14 bg-blue-100 text-brand-700 rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:bg-brand-700 group-hover:text-white transition">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800 group-hover:text-brand-700 transition">Refleksi & Penilaian</h3>
+            <p class="mt-2 text-slate-600 text-sm leading-relaxed">Evaluasi komprehensif, masukan dari Guru Pamong dan DPL untuk pengembangan diri, serta grafik perkembangan nilai.</p>
+          </div>
+
+          <!-- Card 5 -->
+          <div onclick="navigateTo('uts-uas')" class="glass-card p-6 rounded-2xl shadow-xl border border-blue-100 hover:shadow-2xl hover:-translate-y-1 transition duration-300 cursor-pointer group">
+            <div class="w-14 h-14 bg-blue-100 text-brand-700 rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:bg-brand-700 group-hover:text-white transition">
+              <i class="fa-solid fa-video"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800 group-hover:text-brand-700 transition">UTS & UAS</h3>
+            <p class="mt-2 text-slate-600 text-sm leading-relaxed">Memuat dokumentasi video praktik pembelajaran terbaik serta perangkat pembelajaran unggulan UTS dan UAS.</p>
+          </div>
+
+          <!-- Card 6 -->
+          <div onclick="navigateTo('non-mengajar')" class="glass-card p-6 rounded-2xl shadow-xl border border-blue-100 hover:shadow-2xl hover:-translate-y-1 transition duration-300 cursor-pointer group">
+            <div class="w-14 h-14 bg-blue-100 text-brand-700 rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:bg-brand-700 group-hover:text-white transition">
+              <i class="fa-solid fa-hands-holding-child"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800 group-hover:text-brand-700 transition">Kegiatan Non-Mengajar</h3>
+            <p class="mt-2 text-slate-600 text-sm leading-relaxed">Deskripsi lengkap dan dokumentasi kegiatan partisipasi ekosistem sekolah, piket, hingga pembimbingan OSN IPS.</p>
+          </div>
+
+        </div>
+
+        <!-- Location Map Card Section -->
+        <div class="mt-12 bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-blue-100">
+          <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+            <div>
+              <span class="text-xs font-bold text-brand-700 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-md">Lokasi PPL PPG</span>
+              <h3 class="text-2xl font-bold text-slate-800 mt-1">SMP Negeri 5 Yogyakarta</h3>
+              <p class="text-slate-600 text-sm">Tempat Pelaksanaan PPL Terbimbing & Mandiri PPG Calon Guru IPS 2026</p>
+            </div>
+            <a href="https://maps.app.goo.gl/c7rsyxGhD6qNmKnJ8" target="_blank" class="inline-flex items-center gap-2 bg-brand-700 text-white px-5 py-3 rounded-xl hover:bg-brand-800 transition font-medium shadow-md w-fit">
+              <i class="fa-solid fa-map-location-dot"></i> Buka Navigasi Peta Google Maps
+            </a>
+          </div>
+          <div class="w-full h-80 rounded-xl overflow-hidden border border-slate-200">
+            <iframe title="Lokasi SMP Negeri 5 Yogyakarta" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.036081498305!2d110.3683073748238!3d-7.7859849922336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a582e0b12b5cd%3A0xb35a09e07fb8d363!2sSMP%20Negeri%205%20Yogyakarta!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 2. PROFIL MAHASISWA ==================== -->
+    <section id="page-profil" class="page-section hidden py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-blue-100">
+        
+        <!-- Header Profil -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center border-b border-slate-100 pb-10">
+          <div class="flex justify-center lg:justify-start">
+            <div class="relative">
+              <div class="w-64 h-80 rounded-2xl overflow-hidden shadow-2xl border-4 border-blue-50 bg-gradient-to-tr from-brand-700 to-blue-300 p-1">
+                <img src="profil OK.jpg" alt="Patriot Jiwo Tri Rahman" class="w-full h-full object-cover rounded-xl" onerror="this.src='https://via.placeholder.com/300x400?text=Patriot+Jiwo+Tri+Rahman'">
+              </div>
+              <div class="absolute -bottom-4 -right-4 bg-brand-700 text-white p-3 rounded-2xl shadow-lg">
+                <i class="fa-solid fa-award text-2xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-2 space-y-4">
+            <div class="inline-block bg-blue-100 text-brand-800 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+              Pendidikan Profesi Guru 2026
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800">Patriot Jiwo Tri Rahman</h2>
+            <p class="text-brand-700 font-medium text-lg">Mahasiswa PPG Calon Guru Ilmu Pengetahuan Sosial — Universitas Negeri Yogyakarta</p>
             
-            // Scroll to top
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            <div class="p-4 bg-slate-50 border-l-4 border-brand-700 rounded-r-xl italic text-slate-700 text-sm">
+              “Desa mawa cara, negara mawa tata.” <br>
+              <span class="not-italic text-slate-500 font-normal">Setiap desa punya adat dan ceritanya sendiri — begitu pula Kulon Progo.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Narasi Sang Pewaris Dari Bumi Menoreh -->
+        <div class="mt-10 space-y-6 text-slate-700 leading-relaxed">
+          <h3 class="text-2xl font-bold text-slate-800 border-b-2 border-brand-500 inline-block pb-1">Sang Pewaris Dari Bumi Menoreh</h3>
+          <p>
+            Saya Patriot Jiwo Tri Rahman jurusan Pendidikan IPS, Program Profesi Guru (Calon Guru) tahun 2026 berasal dari Kulon Progo. Nama itu sendiri sudah berbicara — kulon berarti barat, merujuk pada posisi wilayah ini di sebelah barat Sungai Progo. Cara leluhur menamai tanah ini mencerminkan kearifan yang sederhana: gunakan apa yang ada di sekitarmu sebagai penanda identitas.
+          </p>
+          <p>
+            Kulon Progo bukan sekadar hamparan Pegunungan Menoreh dan sawah di dataran rendahnya. Ini adalah tanah yang lahir dari sejarah panjang. Setelah Perang Diponegoro (1825–1830), wilayah ini terbentuk dari penyatuan empat kabupaten kecil — Pengasih, Sentolo, Nanggulan, dan Kalibawang — menjadi satu pada 1912. Di setiap desa, para pinisepuh menjaga babad: catatan asal-usul yang dituturkan turun-temurun, dari Gua Kiskendo di Menoreh hingga jejak perjuangan Sanoen di Sentolo.
+          </p>
+          <p>
+            Di sinilah saya belajar bahwa ilmu tidak hanya ada di buku. Ia juga hidup dalam cerita yang dituturkan di beranda rumah dan di depan makam leluhur. Semangat itulah yang saya bawa ke dalam kelas — bahwa IPS paling bermakna ketika berangkat dari tanah yang kita pijak sendiri.
+          </p>
+          <blockquote class="bg-blue-50 border-l-4 border-brand-700 p-4 rounded-r-xl font-medium text-brand-900 text-center my-6">
+            “Akar yang kuat tumbuh dari tanah yang penuh cerita.” <br>
+            <span class="text-xs text-slate-500 font-normal">— Patriot Jiwo Tri Rahman, dari Bumi Menoreh</span>
+          </blockquote>
+        </div>
+
+        <!-- Inspirasi & Tujuan -->
+        <div class="mt-12 space-y-6">
+          <h3 class="text-2xl font-bold text-slate-800 border-b-2 border-brand-500 inline-block pb-1">Inspirasi & Tujuan</h3>
+          <h4 class="text-xl font-semibold text-brand-800">Mengapa Memilih Jalan Menjadi Guru</h4>
+          <p class="text-slate-700 leading-relaxed">
+            Saya bercita-cita menjadi guru bukan semata karena profesi, tetapi karena satu keyakinan: <strong>perubahan paling tahan lama dimulai di dalam ruang kelas</strong>. Tumbuh di Kulon Progo, saya menyaksikan bagaimana guru-guru daerah dengan sumber daya terbatas mampu menyalakan harapan generasi muda. Pengalaman itu menumbuhkan tekad bahwa saya ingin menjadi bagian dari rantai perubahan itu — seorang pendidik yang tidak hanya menyampaikan materi, tetapi juga membantu peserta didik memahami relevansi ilmu dalam kehidupan nyata mereka.
+          </p>
+          <p class="text-slate-700 leading-relaxed">
+            Sebagai calon guru IPS, saya percaya bahwa ilmu sosial bukan sekadar hafalan fakta dan konsep — melainkan cermin untuk memahami diri, masyarakat, dan dunia. Tujuan saya adalah menjadi guru profesional yang kontekstual: guru yang mampu menjembatani teori dengan pengalaman hidup peserta didik, yang hadir tidak hanya sebagai pengajar tetapi juga sebagai pembimbing dan teladan.
+          </p>
+
+          <blockquote class="bg-brand-700 text-white p-6 rounded-2xl shadow-md text-center my-8">
+            <p class="text-lg italic font-light">"Guru yang baik bukan yang memberikan jawaban, melainkan yang membantu murid menemukan keberanian untuk bertanya."</p>
+            <p class="text-xs text-blue-200 mt-2">— Patriot Jiwo Tri Rahman</p>
+          </blockquote>
+
+          <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl border border-blue-100">
+            <h4 class="text-lg font-bold text-brand-900 mb-2">Misi Saya Sebagai Guru</h4>
+            <p class="text-slate-700 font-medium">Mewujudkan pembelajaran IPS yang bermakna, kontekstual, dan memberdayakan — sehingga setiap peserta didik mampu memahami realitas sosialnya, berpikir kritis, dan tumbuh menjadi warga yang aktif dan bertanggung jawab.</p>
+          </div>
+        </div>
+
+        <!-- Kompetensi & Karakter Grid -->
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Kompetensi -->
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <h4 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-list-check text-brand-700"></i> Kompetensi Yang Ingin Dibangun
+            </h4>
+            <ul class="space-y-4">
+              <li class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs">
+                <strong class="text-brand-800 block">Pedagogik Kontekstual</strong>
+                <span class="text-xs text-slate-600">Merancang pembelajaran yang relevan dengan kehidupan nyata peserta didik</span>
+              </li>
+              <li class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs">
+                <strong class="text-brand-800 block">Diferensiasi Pembelajaran</strong>
+                <span class="text-xs text-slate-600">Merespons keberagaman gaya belajar dan kebutuhan setiap murid</span>
+              </li>
+              <li class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs">
+                <strong class="text-brand-800 block">Asesmen Formatif</strong>
+                <span class="text-xs text-slate-600">Menggunakan data penilaian untuk memandu keputusan pembelajaran secara real-time</span>
+              </li>
+              <li class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs">
+                <strong class="text-brand-800 block">Refleksi Berkelanjutan</strong>
+                <span class="text-xs text-slate-600">Mengevaluasi praktik mengajar secara sistematis untuk terus berkembang</span>
+              </li>
+              <li class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs">
+                <strong class="text-brand-800 block">Literasi Digital</strong>
+                <span class="text-xs text-slate-600">Memanfaatkan teknologi secara kreatif dan kritis dalam proses pembelajaran</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Karakter Guru -->
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <h4 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-heart text-brand-700"></i> Karakter Guru Profesional
+            </h4>
+            <ul class="space-y-3 text-sm text-slate-700">
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-green-500 mt-1"></i>
+                <div><strong>Sabar dan hadir sepenuhnya</strong> — memberikan perhatian tulus pada setiap peserta didik, tanpa memandang latar belakang atau kemampuan awalnya.</div>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-green-500 mt-1"></i>
+                <div><strong>Berani berinovasi</strong> — tidak takut mencoba metode baru, berani gagal, dan bangkit dengan strategi yang lebih baik.</div>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-green-500 mt-1"></i>
+                <div><strong>Adil dan inklusif</strong> — memastikan setiap murid mendapat kesempatan belajar yang setara, khususnya mereka yang berasal dari daerah dengan akses terbatas.</div>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-green-500 mt-1"></i>
+                <div><strong>Kolaboratif</strong> — terbuka bekerja sama dengan sesama guru, orang tua, dan komunitas untuk menciptakan ekosistem belajar yang sehat.</div>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-green-500 mt-1"></i>
+                <div><strong>Rendah hati sebagai pelajar seumur hidup</strong> — menyadari bahwa menjadi guru terbaik adalah perjalanan, bukan tujuan akhir.</div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 3. PEMBELAJARAN ==================== -->
+    <section id="page-pembelajaran" class="page-section hidden py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-blue-100">
+        <h2 class="text-3xl font-extrabold text-slate-800 mb-2">Perjalanan Praktik Pembelajaran</h2>
+        <p class="text-slate-600 mb-6">Dokumentasi narasi lengkap 1 Siklus Praktik Mengajar Terbimbing dan 4 Siklus Praktik Mengajar Mandiri.</p>
+
+        <!-- Siklus Tabs Header -->
+        <div class="flex flex-wrap gap-2 border-b border-slate-200 pb-4 mb-8">
+          <button onclick="switchSiklus('siklus-terbimbing')" id="btn-siklus-terbimbing" class="siklus-tab tab-btn active px-4 py-2 rounded-xl font-semibold text-sm transition">
+            Siklus Terbimbing
+          </button>
+          <button onclick="switchSiklus('siklus-mandiri-1')" id="btn-siklus-mandiri-1" class="siklus-tab tab-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-xl font-semibold text-sm transition">
+            Siklus Mandiri 1
+          </button>
+          <button onclick="switchSiklus('siklus-mandiri-2')" id="btn-siklus-mandiri-2" class="siklus-tab tab-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-xl font-semibold text-sm transition">
+            Siklus Mandiri 2
+          </button>
+          <button onclick="switchSiklus('siklus-mandiri-3')" id="btn-siklus-mandiri-3" class="siklus-tab tab-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-xl font-semibold text-sm transition">
+            Siklus Mandiri 3
+          </button>
+          <button onclick="switchSiklus('siklus-mandiri-4')" id="btn-siklus-mandiri-4" class="siklus-tab tab-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-xl font-semibold text-sm transition">
+            Siklus Mandiri 4
+          </button>
+        </div>
+
+        <!-- SIKLUS CONTENT PANELS -->
+
+        <!-- Siklus Terbimbing Content -->
+        <div id="content-siklus-terbimbing" class="siklus-content space-y-6">
+          <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+            <h3 class="text-xl font-bold text-brand-900 mb-4 uppercase">LAPORAN PRAKTIK MENGAJAR - SIKLUS 1 TERBIMBING</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-slate-700">
+              <div><strong>Nama Mahasiswa:</strong> Patriot Jiwo Tri Rahman</div>
+              <div><strong>NIM:</strong> 25105260451</div>
+              <div><strong>Prodi/Bidang Studi:</strong> Ilmu Pengetahuan Sosial</div>
+              <div><strong>Sekolah PPL Mandiri:</strong> SMP Negeri 5 Yogyakarta</div>
+              <div><strong>Materi:</strong> Pemanfaatan dan Pelestarian SDA Tambang</div>
+              <div><strong>Kelas/Fase/Semester:</strong> VIII / I / Ganjil – 2026/2027</div>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-slate-700">
+            <h4 class="font-bold text-lg text-slate-800">A. Deskripsi Kegiatan Praktik Mengajar</h4>
+            <p>Kegiatan praktik mengajar terbimbing dilaksanakan di kelas VIII SMP Negeri 5 Yogyakarta pada mata pelajaran Ilmu Pengetahuan Sosial (IPS) dengan materi pokok “Menjaga Bumi, Menjaga Kehidupan: Pemanfaatan dan Pelestarian Sumber Daya Alam Tambang”. Pembelajaran ini dirancang sebanyak dua pertemuan (total 4 x 40 menit) menggunakan model Problem Based Learning (PBL) berkerangka Universal Design for Learning (UDL) serta pendekatan Pembelajaran Mendalam (Deep Learning) yang berpusat pada peserta didik.</p>
+            <p>Pertemuan pertama berfokus pada pemahaman konsep pengertian, tujuan, dan penggolongan sumber daya alam tambang (mineral dan batu bara). Pembelajaran diawali dengan check-in emoji berkesadaran, apersepsi mengaitkan materi flora-fauna sebelumnya, serta pelaksanaan Kartu Diagnostik singkat (4 soal) untuk memetakan level kesiapan belajar murid. Selanjutnya, murid bekerja dalam kelompok bertingkat pengerjaan LKPD 1 'Peta Tambang Kita' berdasarkan level TaRL (Menjelajah, Berkembang, dan Melesat) dan mempresentasikannya melalui metode gallery walk, ditutup dengan refleksi tiket keluar.</p>
+            <p>Pertemuan kedua berfokus pada analisis konektivitas antarruang antara pemanfaatan tambang dengan dampak kerusakan lingkungan serta upaya pelestariannya. Murid menganalisis studi kasus nyata pertambangan di Daerah Istimewa Yogyakarta (DIY), seperti pasir Merapi, batu gamping Gunungkidul, dan pasir besi Kulon Progo melalui pengerjaan LKPD 2 'Suara dari Lokasi Tambang'. Dalam kegiatan kelompok, murid memilih dan memerankan tiga sudut pandang (warga terdampak, pekerja tambang, atau pemerintah daerah) untuk merumuskan kompromi yang adil dan langkah pelestarian lingkungan.</p>
+
+            <h4 class="font-bold text-lg text-slate-800 pt-2">B. Strategi Pembelajaran yang Digunakan</h4>
+            <ol class="list-decimal pl-5 space-y-2">
+              <li><strong>Model Problem Based Learning (PBL):</strong> Mendorong peserta didik menyelidiki studi kasus konkrit aktivitas pertambangan lokal di DIY, menganalisis pemanfaatan serta dampaknya lintas wilayah, dan merumuskan solusi pelestarian yang berkeadilan.</li>
+              <li><strong>Pendekatan Teaching at the Right Level (TaRL):</strong> Diterapkan melalui pemetaan diagnostik di awal pembelajaran untuk membagi kelompok dalam tiga jenjang adaptif (Menjelajah, Berkembang, Melesat) dengan ketersediaan paket tugas LKPD berjenjang serta tingkat pendampingan (scaffolding) yang disesuaikan.</li>
+              <li><strong>Pendekatan Culturally Responsive Teaching (CRT):</strong> Mengangkat objek pertambangan lokal di DIY serta menginternalisasi nilai kearifan lokal 'Hamemayu Hayuning Bawana' (menjaga keselarasan dan kelestarian alam) sebagai landasan etis dalam pelestarian lingkungan.</li>
+              <li><strong>Pembelajaran Sosial-Emosional (PSE) dan Deep Learning:</strong> Memfasilitasi kesadaran sosial (empati terhadap sudut pandang warga terdampak, pekerja, dan pemerintah) serta keterampilan berelasi melalui diskusi kelompok kolaboratif.</li>
+            </ol>
+
+            <h4 class="font-bold text-lg text-slate-800 pt-2">C. Analisis Kelebihan dan Kelemahan Desain Pembelajaran</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-2">
+              <div class="bg-green-50 border border-green-200 p-4 rounded-xl">
+                <strong class="text-green-800 block mb-2">Kelebihan:</strong>
+                <ul class="list-disc pl-4 text-xs space-y-1 text-slate-700">
+                  <li>Studi kasus nyata pertambangan DIY (Merapi, Gunungkidul, Kulon Progo) sangat mudah dipahami dan relevan.</li>
+                  <li>Simulasi bermain peran (role-play) berhasil melatih empati sosial dan penalaran kritis.</li>
+                  <li>Penerapan TaRL melalui LKPD berjenjang memastikan kelompok 'Menjelajah' mendapat bantuan tepat.</li>
+                  <li>Integrasi kearifan lokal Hamemayu Hayuning Bawana memperkuat dimensi etika lingkungan.</li>
+                </ul>
+              </div>
+              <div class="bg-red-50 border border-red-200 p-4 rounded-xl">
+                <strong class="text-red-800 block mb-2">Kelemahan:</strong>
+                <ul class="list-disc pl-4 text-xs space-y-1 text-slate-700">
+                  <li>Alokasi waktu 40 menit kegiatan inti Pertemuan 2 terasa padat saat presentasi role-play.</li>
+                  <li>Beberapa murid kelompok 'Menjelajah' butuh bantuan intensif bedakan istilah teknis mineral & batu bara.</li>
+                  <li>Penilaian observasi sikap kesadaran sosial saat diskusi belum terdokumentasi mandiri menyeluruh.</li>
+                  <li>Penggunaan Liveworksheets terkendala ketersediaan gawai beberapa peserta didik.</li>
+                </ul>
+              </div>
+            </div>
+
+            <h4 class="font-bold text-lg text-slate-800 pt-2">D. Refleksi Pengalaman Mengajar</h4>
+            <p>Praktik mengajar terbimbing ini memberikan pengalaman mendidik yang sangat berharga. Penerapan PBL yang dipadukan dengan teknik role-play berhasil menciptakan dinamika kelas yang aktif. Peserta didik tampak terlibat secara tulus saat mendiskusikan dilema pertambangan pasir dan batu di wilayah DIY, karena mereka dapat merasakan keterkaitan antara pembangunan fisik di kota dengan dampak lingkungan di daerah hulu.</p>
+            <p>Pengalaman menerapkan TaRL menegaskan pentingnya pemetaan kesiapan belajar awal. Dengan adanya modul LKPD berjenjang, peserta didik yang membutuhkan penguatan dasar tidak merasa berkecil hati, sementara kelompok 'Melesat' tertantang menyusun usulan kompromi kebijakan pertambangan. Namun demikian, pengelolaan waktu dalam tahap presentasi bermain peran menjadi catatan reflektif utama agar seluruh kelompok mendapatkan kesempatan unjuk kerja yang setara.</p>
+
+            <h4 class="font-bold text-lg text-slate-800 pt-2">E. Rencana Perbaikan untuk Pembelajaran Mendatang</h4>
+            <ul class="list-disc pl-5 space-y-1">
+              <li><strong>Optimalisasi Manajemen Presentasi (Gallery Walk):</strong> Mengganti teknik presentasi lisan bergiliran dengan format Gallery Walk/berpasangan untuk menghemat waktu.</li>
+              <li><strong>Penyediaan Media Bantuan Visual (Scaffolding):</strong> Menyiapkan kartu bergambar interaktif dan kuis visual untuk kelompok 'Menjelajah'.</li>
+              <li><strong>Penguatan Penilaian Teman Sebaya (Peer-Assessment):</strong> Mengintegrasikan lembar pengamatan antarteman untuk memantau sikap sosial.</li>
+              <li><strong>Penyediaan Modul Cetak Alternatif:</strong> Menyiapkan salinan fisik LKPD cetak berkualitas tinggi.</li>
+            </ul>
+
+            <h4 class="font-bold text-lg text-slate-800 pt-2">F. Kesimpulan</h4>
+            <p>Praktik mengajar IPS Terbimbing di kelas VIII SMPN 5 Yogyakarta membuktikan bahwa pendekatan Problem Based Learning (PBL) yang terintegrasi dengan TaRL dan CRT mampu menghadirkan pembelajaran yang bermakna, kontekstual, dan inklusif. Melalui pembahasan kasus nyata SDA tambang di wilayah DIY, peserta didik tidak hanya menguasai konsep penggolongan bahan tambang dan konektivitas antarruang, tetapi juga memiliki kesadaran kritis dan empati lingkungan dalam menjaga pelestarian alam.</p>
+          </div>
+        </div>
+
+        <!-- Siklus Mandiri 1 Content -->
+        <div id="content-siklus-mandiri-1" class="siklus-content hidden space-y-6">
+          <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+            <h3 class="text-xl font-bold text-brand-900 mb-4 uppercase">LAPORAN PRAKTIK MENGAJAR - SIKLUS 1 MANDIRI</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-slate-700">
+              <div><strong>Nama Mahasiswa:</strong> Patriot Jiwo Tri Rahman</div>
+              <div><strong>NIM:</strong> 25105260451</div>
+              <div><strong>Prodi/Bidang Studi:</strong> Ilmu Pengetahuan Sosial</div>
+              <div><strong>Sekolah PPL Mandiri:</strong> SMP Negeri 5 Yogyakarta</div>
+              <div><strong>Materi:</strong> Potensi, Pemanfaatan, dan Pelestarian SDA Indonesia</div>
+              <div><strong>Kelas/Fase/Semester:</strong> VIII / I / Ganjil – 2026/2027</div>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-slate-700">
+            <h4 class="font-bold text-lg text-slate-800">A. Deskripsi Kegiatan Praktik Mengajar</h4>
+            <p>Praktik mengajar ini dilaksanakan di kelas VIII SMP Negeri 5 Yogyakarta pada mata pelajaran IPS dengan fokus materi Potensi, Pemanfaatan, dan Pelestarian Sumber Daya Alam Indonesia (6 x 40 menit, 2 pertemuan) berkerangka Universal Design for Learning (UDL) & Deep Learning melalui prinsip TaRL dan CRT.</p>
+            <p>Kegiatan inti diimplementasikan melalui model inovatif Split Bottle Challenge (SBC)—sebuah model pembelajaran kooperatif berbasis permainan fisik bottle flip yang melatih kecakapan kolaboratif dan pengelolaan emosi. Setiap keberhasilan memutar botol memberi hak kepada kelompok mengambil kartu soal berjenjang (hijau: Menjelajah, kuning: Berkembang, merah: Melesat).</p>
+
+            <h4 class="font-bold text-lg text-slate-800">B. Strategi Pembelajaran yang Digunakan</h4>
+            <ul class="list-disc pl-5 space-y-2">
+              <li><strong>Split Bottle Challenge (SBC):</strong> Menciptakan suasana belajar mindful, meaningful, dan joyful serta mengelola emosi.</li>
+              <li><strong>Teaching at the Right Level (TaRL):</strong> Pengelompokan fleksibel dengan pendampingan rumpang (Menjelajah), pertanyaan penuntun (Berkembang), dan analisis kritis (Melesat).</li>
+              <li><strong>Culturally Responsive Teaching (CRT):</strong> Mengangkat pasir Merapi, batu gamping Gunungkidul, pasir besi Kulon Progo, serta filosofi Hamemayu Hayuning Bawana.</li>
+              <li><strong>Integrasi PSE:</strong> Peran terstruktur (ketua, pembaca, pencatat, penjaga waktu, pelapor, pemeriksa) melatih Keterampilan Berelasi.</li>
+            </ul>
+
+            <h4 class="font-bold text-lg text-slate-800">C. Analisis Kelebihan dan Kelemahan Desain Pembelajaran</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-green-50 border border-green-200 p-4 rounded-xl text-xs">
+                <strong class="text-green-800 block text-sm mb-1">Kelebihan:</strong>
+                <p>Meningkatkan motivasi aktif lewat bottle flip, akomodasi diferensiasi tepat dengan kartu berjenjang, konteks lokal DIY yang kuat, dan peningkatan penalaran kritis konektivitas hulu-hilir.</p>
+              </div>
+              <div class="bg-red-50 border border-red-200 p-4 rounded-xl text-xs">
+                <strong class="text-red-800 block text-sm mb-1">Kelemahan:</strong>
+                <p>Kegaduhan saat lempar botol pada kelompok besar (8 orang), ketergantungan gawai untuk Quizizz, dan beban observasi guru yang berat.</p>
+              </div>
+            </div>
+
+            <h4 class="font-bold text-lg text-slate-800">D. Refleksi Pengalaman Mengajar</h4>
+            <p>Penggabungan permainan SBC dengan TaRL menciptakan dinamika kelas yang sangat hidup. Namun, alokasi waktu presentasi kurang optimal karena ukuran kelompok yang terlalu besar (8 orang per kelompok).</p>
+
+            <h4 class="font-bold text-lg text-slate-800">E. Rencana Perbaikan Pembelajaran</h4>
+            <p>Restrukturisasi ukuran kelompok menjadi 4–5 orang, diversifikasi moda asesmen cetak paralel Quizizz, penerapan Peer Assessment, dan optimasi waktu presentasi melalui Gallery Walk.</p>
+
+            <h4 class="font-bold text-lg text-slate-800">F. Kesimpulan</h4>
+            <p>Pengintegrasian SBC berbasis Deep Learning, TaRL, dan CRT berhasil menciptakan pengalaman belajar yang mindful, meaningful, dan joyful serta mendongkrak pemahaman konsep siswa.</p>
+          </div>
+        </div>
+
+        <!-- Siklus Mandiri 2 Content -->
+        <div id="content-siklus-mandiri-2" class="siklus-content hidden space-y-6">
+          <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+            <h3 class="text-xl font-bold text-brand-900 mb-4 uppercase">LAPORAN PRAKTIK MENGAJAR - SIKLUS 2 MANDIRI</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-slate-700">
+              <div><strong>Nama Mahasiswa:</strong> Patriot Jiwo Tri Rahman</div>
+              <div><strong>NIM:</strong> 25105260451</div>
+              <div><strong>Prodi/Bidang Studi:</strong> Ilmu Pengetahuan Sosial</div>
+              <div><strong>Sekolah PPL Mandiri:</strong> SMP Negeri 5 Yogyakarta</div>
+              <div><strong>Materi:</strong> Sumber Daya Manusia dan Keberagaman Budaya</div>
+              <div><strong>Kelas/Fase/Semester:</strong> VIII / I / Ganjil – 2026/2027</div>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-slate-700">
+            <h4 class="font-bold text-lg text-slate-800">A. Deskripsi Kegiatan Praktik Mengajar</h4>
+            <p>Materi pokok: “Bumi Memanas, Budaya Beradaptasi: Aktivitas Manusia dan Dampak Perubahan Iklim bagi Kehidupan Masyarakat” (3 Pertemuan, 6 x 40 menit) menggunakan PBL, UDL, Deep Learning, TaRL, dan CRT.</p>
+            <p>Sesi mencakup stimulasi ruang budaya lokal (Tugu Pagoda Wates, Kampung Pecinan Ketandan, Klenteng Poncowinatan), asesmen diagnostik 'Tangga Kemampuan', analisis data BPS tentang IPM, serta simulasi bentuk interaksi sosial adaptasi iklim.</p>
+
+            <h4 class="font-bold text-lg text-slate-800">B. Strategi & Kelebihan Kelemahan</h4>
+            <p><strong>Strategi:</strong> PBL 5 sintaks, TaRL 'Tangga Kemampuan', CRT situs lokal & Pranata Mangsa, PSE mindful-meaningful-joyful.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-green-50 border border-green-200 p-4 rounded-xl text-xs">
+                <strong class="text-green-800 block text-sm mb-1">Kelebihan:</strong> Presisi diagnostik TaRL, keterlibatan empati CRT ruang budaya lokal, literasi data BPS, dan komitmen Janji Aksi Lingkungan.
+              </div>
+              <div class="bg-red-50 border border-red-200 p-4 rounded-xl text-xs">
+                <strong class="text-red-800 block text-sm mb-1">Kelemahan:</strong> Durasi diagnostik tersita di awal, data BPS rumit untuk level Menjelajah, serta potensi kecanggungan sosial TaRL.
+              </div>
+            </div>
+
+            <h4 class="font-bold text-lg text-slate-800">C. Refleksi & Perbaikan</h4>
+            <p>Sangat berkesan melayani keberagaman kebutuhan murid. Rencana perbaikan meliputi efisiensi diagnostik asinkron (Google Form), penyederhanaan infografis data BPS, dan penguatan Peer-Assessment.</p>
+          </div>
+        </div>
+
+        <!-- Siklus Mandiri 3 Content -->
+        <div id="content-siklus-mandiri-3" class="siklus-content hidden space-y-6">
+          <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+            <h3 class="text-xl font-bold text-brand-900 mb-4 uppercase">LAPORAN PRAKTIK MENGAJAR - SIKLUS 3 MANDIRI</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-slate-700">
+              <div><strong>Nama Mahasiswa:</strong> Patriot Jiwo Tri Rahman</div>
+              <div><strong>NIM:</strong> 25105260451</div>
+              <div><strong>Prodi/Bidang Studi:</strong> Ilmu Pengetahuan Sosial</div>
+              <div><strong>Sekolah PPL Mandiri:</strong> SMP Negeri 5 Yogyakarta</div>
+              <div><strong>Materi:</strong> Dinamika Interaksi Sosial</div>
+              <div><strong>Kelas/Fase/Semester:</strong> VIII / I / Ganjil – 2026/2027</div>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-slate-700">
+            <h4 class="font-bold text-lg text-slate-800">A. Deskripsi Kegiatan Praktik Mengajar</h4>
+            <p>Materi: “Dinamika Interaksi Sosial: Kebhinekaan, Kerja Sama, dan Penyelesaian Konflik Berbasis Kearifan Lokal” (3 Pertemuan, 6 x 40 menit) mengintegrasikan model Teams Games Tournament (TGT) dan PBL.</p>
+            <p>Mengangkat konteks Pasar Beringharjo, Kampung Ketandan, Kampung Kauman, Sekaten, dan tradisi Sambatan. Murid bertanding di Meja Turnamen TGT adaptif (Menjelajah, Berkembang, Melesat) dan diakhiri penganugerahan Super Team, Great Team, Good Team.</p>
+
+            <h4 class="font-bold text-lg text-slate-800">B. Kelebihan & Refleksi</h4>
+            <p>TGT mengikis pasivitas siswa, membangun percaya diri kelompok Menjelajah, dan membumikan konsep sosiologis abstrak. Evaluasi kuis 20 soal memberikan data ketuntasan individu komprehensif.</p>
+          </div>
+        </div>
+
+        <!-- Siklus Mandiri 4 Content -->
+        <div id="content-siklus-mandiri-4" class="siklus-content hidden space-y-6">
+          <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+            <h3 class="text-xl font-bold text-brand-900 mb-4 uppercase">LAPORAN PRAKTIK MENGAJAR - SIKLUS 4 MANDIRI</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-slate-700">
+              <div><strong>Nama Mahasiswa:</strong> Patriot Jiwo Tri Rahman</div>
+              <div><strong>NIM:</strong> 25105260451</div>
+              <div><strong>Prodi/Bidang Studi:</strong> Ilmu Pengetahuan Sosial</div>
+              <div><strong>Sekolah PPL Mandiri:</strong> SMP Negeri 5 Yogyakarta</div>
+              <div><strong>Materi:</strong> Konektivitas Antarruang</div>
+              <div><strong>Kelas/Fase/Semester:</strong> VIII / I / Ganjil – 2026/2027</div>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-slate-700">
+            <h4 class="font-bold text-lg text-slate-800">A. Deskripsi Kegiatan Praktik Mengajar</h4>
+            <p>Materi: “Konektivitas Antarruang: SDA, Perubahan Iklim, dan Adaptasi Kebudayaan Lokal” (3 Pertemuan, 6 x 40 menit) menggunakan Game-Based Learning (Ruangopoly - Monopoly Konektivitas) & Make a Match.</p>
+            <p>Menjelaskan 3 faktor Ullman (Regional Complementary, Intervening Opportunity, Spatial Transferability) dengan keterhubungan Merapi-Kota Jogja-Pesisir Kulon Progo, serta aturan 'Rotasi Peran Wajib' & 'Semua Suara' untuk mengikis dominasi siswa pandai.</p>
+
+            <h4 class="font-bold text-lg text-slate-800">B. Kesimpulan Portofolio Pembelajaran</h4>
+            <p>Secara keseluruhan dari Siklus 1 hingga Siklus 4, proses evaluasi dan refleksi yang konsisten telah berhasil mentransformasi praktik pembelajaran menjadi lebih interaktif, adaptif terhadap kebutuhan murid, serta berfokus pada pembentukan karakter Profil Pelajar Pancasila.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 4. ARTEFAK ==================== -->
+    <section id="page-artefak" class="page-section hidden py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-blue-100">
+        <h2 class="text-3xl font-extrabold text-slate-800 mb-2">Artefak Pembelajaran</h2>
+        <p class="text-slate-600 mb-8">Kumpulan berkas perangkat pembelajaran, media presentasi PPT, dan dokumentasi pelaksanaan di SMPN 5 Yogyakarta.</p>
+
+        <div class="space-y-8">
+
+          <!-- Artefak Item 1 -->
+          <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 hover:bg-white hover:shadow-md transition">
+            <span class="bg-brand-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Siklus 1 Terbimbing</span>
+            <h3 class="text-xl font-bold text-slate-800 mt-2">Sumber Daya Alam Tambang</h3>
+            <p class="text-xs text-slate-500 mb-4">Materi Pemanfaatan & Pelestarian SDA Tambang DIY</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <a href="https://docs.google.com/presentation/d/1uhgts9vAC9U0YgLGIUKanvwO-nVWXnTI/edit?usp=sharing&ouid=105600632581689660298&rtpof=true&sd=true" target="_blank" class="flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-800 p-3 rounded-xl hover:bg-orange-100 transition text-xs font-semibold">
+                <i class="fa-solid fa-file-powerpoint text-lg"></i> Media / PPT Pembelajaran
+              </a>
+              <a href="https://drive.google.com/file/d/1FFTqnBXzlwZcxyT6WJu7_VBvB0EABq1s/view?usp=sharing" target="_blank" class="flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-800 p-3 rounded-xl hover:bg-blue-100 transition text-xs font-semibold">
+                <i class="fa-solid fa-file-pdf text-lg"></i> Rencana Pembelajaran (RPP/RPM)
+              </a>
+              <a href="https://drive.google.com/file/d/1YeEty_railwbS_fJjpf4-Akt0bMRXwic/view?usp=sharing" target="_blank" class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 p-3 rounded-xl hover:bg-emerald-100 transition text-xs font-semibold">
+                <i class="fa-solid fa-images text-lg"></i> Dokumentasi Pelaksanaan
+              </a>
+            </div>
+          </div>
+
+          <!-- Artefak Item 2 -->
+          <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 hover:bg-white hover:shadow-md transition">
+            <span class="bg-brand-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Siklus 1 Mandiri</span>
+            <h3 class="text-xl font-bold text-slate-800 mt-2">SDA dan Keberagaman Budaya</h3>
+            <p class="text-xs text-slate-500 mb-4">Model Split Bottle Challenge & Kearifan Lokal DIY</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <a href="https://docs.google.com/presentation/d/1baSpragEflhRkp41eNR5KYVX3tw6yHMC/edit?usp=sharing&ouid=105600632581689660298&rtpof=true&sd=true" target="_blank" class="flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-800 p-3 rounded-xl hover:bg-orange-100 transition text-xs font-semibold">
+                <i class="fa-solid fa-file-powerpoint text-lg"></i> Media / PPT Pembelajaran
+              </a>
+              <a href="https://drive.google.com/file/d/1debFlM5o60pSBTsYiabl7dFopk_74v2z/view?usp=sharing" target="_blank" class="flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-800 p-3 rounded-xl hover:bg-blue-100 transition text-xs font-semibold">
+                <i class="fa-solid fa-file-pdf text-lg"></i> Rencana Pembelajaran (RPP/RPM)
+              </a>
+              <a href="https://drive.google.com/file/d/11Rymo_TTD824kZjwjql4suBL9172JWx9/view?usp=sharing" target="_blank" class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 p-3 rounded-xl hover:bg-emerald-100 transition text-xs font-semibold">
+                <i class="fa-solid fa-images text-lg"></i> Dokumentasi Pelaksanaan
+              </a>
+            </div>
+          </div>
+
+          <!-- Artefak Item 3 -->
+          <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 hover:bg-white hover:shadow-md transition">
+            <span class="bg-brand-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Siklus 2 Mandiri</span>
+            <h3 class="text-xl font-bold text-slate-800 mt-2">Sumber Daya Manusia & Perubahan Iklim</h3>
+            <p class="text-xs text-slate-500 mb-4">Literasi Data BPS, IPM & Tangga Kemampuan TaRL</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <a href="https://docs.google.com/presentation/d/17Nm8-HeLvx_tHY38haeuaoF_IGTY4yvJ/edit?usp=sharing&ouid=105600632581689660298&rtpof=true&sd=true" target="_blank" class="flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-800 p-3 rounded-xl hover:bg-orange-100 transition text-xs font-semibold">
+                <i class="fa-solid fa-file-powerpoint text-lg"></i> Media / PPT Pembelajaran
+              </a>
+              <a href="https://drive.google.com/file/d/1uSbPdQ74Ua8saxMlDGpLXhMHAZam-S3r/view?usp=sharing" target="_blank" class="flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-800 p-3 rounded-xl hover:bg-blue-100 transition text-xs font-semibold">
+                <i class="fa-solid fa-file-pdf text-lg"></i> Rencana Pembelajaran (RPP/RPM)
+              </a>
+              <a href="https://drive.google.com/file/d/1lmddKaPeU2eTFkK2iW3A2Xv27tfeHHJr/view?usp=sharing" target="_blank" class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 p-3 rounded-xl hover:bg-emerald-100 transition text-xs font-semibold">
+                <i class="fa-solid fa-images text-lg"></i> Dokumentasi Pelaksanaan
+              </a>
+            </div>
+          </div>
+
+          <!-- Artefak Item 4 -->
+          <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 hover:bg-white hover:shadow-md transition">
+            <span class="bg-brand-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Siklus 3 Mandiri</span>
+            <h3 class="text-xl font-bold text-slate-800 mt-2">Dinamika Interaksi Sosial</h3>
+            <p class="text-xs text-slate-500 mb-4">Model Teams Games Tournament (TGT) Kebhinekaan</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <a href="https://docs.google.com/presentation/d/1q4U3JR8qTHIwvHopgXtkoZ2WoRwbb9My/edit?usp=sharing&ouid=105600632581689660298&rtpof=true&sd=true" target="_blank" class="flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-800 p-3 rounded-xl hover:bg-orange-100 transition text-xs font-semibold">
+                <i class="fa-solid fa-file-powerpoint text-lg"></i> Media / PPT Pembelajaran
+              </a>
+              <a href="https://drive.google.com/file/d/1STZtB88_ToQS6MAwOQRnXi2YubuBhI71/view?usp=sharing" target="_blank" class="flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-800 p-3 rounded-xl hover:bg-blue-100 transition text-xs font-semibold">
+                <i class="fa-solid fa-file-pdf text-lg"></i> Rencana Pembelajaran (RPP/RPM)
+              </a>
+              <a href="https://drive.google.com/file/d/1prKPNI8gcPMFgXUQI8ycjP6-wQIZTUP_/view?usp=sharing" target="_blank" class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 p-3 rounded-xl hover:bg-emerald-100 transition text-xs font-semibold">
+                <i class="fa-solid fa-images text-lg"></i> Dokumentasi Pelaksanaan
+              </a>
+            </div>
+          </div>
+
+          <!-- Artefak Item 5 -->
+          <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 hover:bg-white hover:shadow-md transition">
+            <span class="bg-brand-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Siklus 4 Mandiri</span>
+            <h3 class="text-xl font-bold text-slate-800 mt-2">Konektivitas Antarruang</h3>
+            <p class="text-xs text-slate-500 mb-4">Game-Based Learning (Ruangopoly) & Factors of Ullman</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <a href="https://docs.google.com/presentation/d/1hVLYJwuRQw8S18QOg99pq9Bz7Bc_NGL4/edit?usp=sharing&ouid=105600632581689660298&rtpof=true&sd=true" target="_blank" class="flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-800 p-3 rounded-xl hover:bg-orange-100 transition text-xs font-semibold">
+                <i class="fa-solid fa-file-powerpoint text-lg"></i> Media / PPT Pembelajaran
+              </a>
+              <a href="https://drive.google.com/file/d/1i1DFK3oq0WQlVWdD8pUiDYQmZSfX85vt/view?usp=sharing" target="_blank" class="flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-800 p-3 rounded-xl hover:bg-blue-100 transition text-xs font-semibold">
+                <i class="fa-solid fa-file-pdf text-lg"></i> Rencana Pembelajaran (RPP/RPM)
+              </a>
+              <a href="https://drive.google.com/file/d/1mDfqayN0cVWt0uU8qttRAB1IRjcpqTuX/view?usp=sharing" target="_blank" class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 p-3 rounded-xl hover:bg-emerald-100 transition text-xs font-semibold">
+                <i class="fa-solid fa-images text-lg"></i> Dokumentasi Pelaksanaan
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. REFLEKSI DAN PENILAIAN ==================== -->
+    <section id="page-refleksi" class="page-section hidden py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-blue-100 space-y-8">
+        
+        <div>
+          <h2 class="text-3xl font-extrabold text-slate-800 mb-2">Refleksi & Laporan Penilaian Komprehensif</h2>
+          <p class="text-slate-600">
+            Penilaian Praktik Mengajar dan Perangkat Pembelajaran oleh Guru Pamong (<strong>Dicky Muhammad Hidayat, S.Pd</strong>) dan Dosen Pembimbing Lapangan (<strong>Prof. Dr. Drs. Saliman, M.Pd.</strong>).
+          </p>
+        </div>
+
+        <!-- Progress Chart Container -->
+        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+          <h3 class="text-xl font-bold text-slate-800 mb-4 text-center">Grafik Peningkatan Nilai Evaluasi Praktik Mengajar</h3>
+          <div class="w-full max-w-3xl mx-auto h-72">
+            <canvas id="scoreChart"></canvas>
+          </div>
+          <p class="text-center text-xs text-slate-500 mt-4">Perkembangan konsisten berjenjang dari Nilai 85 (Siklus Terbimbing) hingga 95 (Siklus Mandiri 4).</p>
+        </div>
+
+        <!-- Links Penilaian Resmi Per Siklus -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-bold text-slate-800">Berkas Lembar Penilaian Resmi (Akses Drive)</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            
+            <!-- Item -->
+            <div class="p-4 bg-blue-50/50 rounded-xl border border-blue-100 space-y-2">
+              <strong class="text-slate-800 block text-sm">Penilaian Siklus 1 Terbimbing</strong>
+              <div class="flex flex-col gap-1">
+                <a href="https://drive.google.com/file/d/1TcgDBo6oAlzZapMAAVvaagBxIcXtBpxd/view?usp=sharing" target="_blank" class="text-brand-700 hover:underline flex items-center gap-1"><i class="fa-solid fa-link"></i> Penilaian Perangkat Pembelajaran</a>
+                <a href="https://drive.google.com/file/d/1-dPnqrRgQFM3t02HTbws-TR-zzVOai5B/view?usp=sharing" target="_blank" class="text-brand-700 hover:underline flex items-center gap-1"><i class="fa-solid fa-link"></i> Penilaian Praktik Mengajar</a>
+              </div>
+            </div>
+
+            <!-- Item -->
+            <div class="p-4 bg-blue-50/50 rounded-xl border border-blue-100 space-y-2">
+              <strong class="text-slate-800 block text-sm">Penilaian Siklus 1 Mandiri</strong>
+              <div class="flex flex-col gap-1">
+                <a href="https://drive.google.com/file/d/15GZilbc5NoVw9LVNr13D6Bq4PePS37XN/view?usp=sharing" target="_blank" class="text-brand-700 hover:underline flex items-center gap-1"><i class="fa-solid fa-link"></i> Penilaian Perangkat Pembelajaran</a>
+                <a href="https://drive.google.com/file/d/1f1A2VL7XX1ncIT43DWH2K7G81CHnW4hO/view?usp=sharing" target="_blank" class="text-brand-700 hover:underline flex items-center gap-1"><i class="fa-solid fa-link"></i> Penilaian Praktik Mengajar</a>
+              </div>
+            </div>
+
+            <!-- Item -->
+            <div class="p-4 bg-blue-50/50 rounded-xl border border-blue-100 space-y-2">
+              <strong class="text-slate-800 block text-sm">Penilaian Siklus 2 Mandiri</strong>
+              <div class="flex flex-col gap-1">
+                <a href="https://drive.google.com/file/d/1d_E0MXBIPhBCZd_KfhvpKNKHWFG5D_js/view?usp=sharing" target="_blank" class="text-brand-700 hover:underline flex items-center gap-1"><i class="fa-solid fa-link"></i> Penilaian Perangkat Pembelajaran</a>
+                <a href="https://drive.google.com/file/d/1XzbW6qGW9DSRSVXy3B6HwKR2ugSx98LL/view?usp=sharing" target="_blank" class="text-brand-700 hover:underline flex items-center gap-1"><i class="fa-solid fa-link"></i> Penilaian Praktik Mengajar</a>
+              </div>
+            </div>
+
+            <!-- Item -->
+            <div class="p-4 bg-blue-50/50 rounded-xl border border-blue-100 space-y-2">
+              <strong class="text-slate-800 block text-sm">Penilaian Siklus 3 Mandiri</strong>
+              <div class="flex flex-col gap-1">
+                <a href="https://drive.google.com/file/d/1dnEzGmVtTRsen3N1-gAzGizjc1kv8HaZ/view?usp=sharing" target="_blank" class="text-brand-700 hover:underline flex items-center gap-1"><i class="fa-solid fa-link"></i> Penilaian Perangkat Pembelajaran</a>
+                <a href="https://drive.google.com/file/d/1SleXgpaLwYuHv-CgoR4l1fhScHduOksk/view?usp=sharing" target="_blank" class="text-brand-700 hover:underline flex items-center gap-1"><i class="fa-solid fa-link"></i> Penilaian Praktik Mengajar</a>
+              </div>
+            </div>
+
+            <!-- Item -->
+            <div class="p-4 bg-blue-50/50 rounded-xl border border-blue-100 space-y-2 md:col-span-2">
+              <strong class="text-slate-800 block text-sm">Penilaian Siklus 4 Mandiri</strong>
+              <div class="flex flex-col md:flex-row gap-4">
+                <a href="https://drive.google.com/file/d/1viRy8ENO6xfnD70N4LDGpEb5ZjIUDe23/view?usp=sharing" target="_blank" class="text-brand-700 hover:underline flex items-center gap-1"><i class="fa-solid fa-link"></i> Penilaian Perangkat Pembelajaran</a>
+                <a href="https://drive.google.com/file/d/1czuDMHWxvCZWb7_UiA2sWARYB3KS-JYl/view?usp=sharing" target="_blank" class="text-brand-700 hover:underline flex items-center gap-1"><i class="fa-solid fa-link"></i> Penilaian Praktik Mengajar</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 6. UTS DAN UAS ==================== -->
+    <section id="page-uts-uas" class="page-section hidden py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-blue-100 space-y-8">
+        <div>
+          <h2 class="text-3xl font-extrabold text-slate-800 mb-2">UTS & UAS Praktik Pembelajaran Terbaik</h2>
+          <p class="text-slate-600">Dokumentasi video pembelajaran terbaik serta perangkat lengkap ujian tengah & akhir semester.</p>
+        </div>
+
+        <!-- UTS vs UAS Tabs -->
+        <div class="flex gap-4 border-b border-slate-200 pb-4">
+          <button onclick="switchExam('uts')" id="btn-uts" class="exam-tab tab-btn active px-6 py-2.5 rounded-xl font-bold text-sm transition">
+            Siklus Terbaik UTS
+          </button>
+          <button onclick="switchExam('uas')" id="btn-uas" class="exam-tab tab-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-6 py-2.5 rounded-xl font-bold text-sm transition">
+            Siklus Terbaik UAS
+          </button>
+        </div>
+
+        <!-- UTS Panel Content -->
+        <div id="content-uts" class="exam-content space-y-6">
+          <div class="bg-indigo-50 border border-indigo-200 p-6 rounded-2xl">
+            <h3 class="text-xl font-bold text-indigo-950 mb-2 uppercase">LAPORAN PRAKTIK MENGAJAR UNGGULAN UTS (SIKLUS 2)</h3>
+            <p class="text-sm text-indigo-800 mb-4">Materi: Sumber Daya Manusia dan Keberagaman Budaya</p>
+            
+            <a href="https://drive.google.com/file/d/1w4Geh6p7x9hwCvX6b1gdMvqwNV5w-sUA/view?usp=sharing" target="_blank" class="inline-flex items-center gap-2 bg-indigo-700 text-white px-5 py-3 rounded-xl hover:bg-indigo-800 transition font-bold text-sm shadow-md">
+              <i class="fa-solid fa-circle-play text-lg"></i> Tonton Video Pembelajaran UTS di Google Drive
+            </a>
+          </div>
+
+          <!-- Artefak UTS -->
+          <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+            <h4 class="font-bold text-slate-800 mb-3">Artefak Perangkat Pembelajaran UTS</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-semibold">
+              <a href="https://docs.google.com/presentation/d/17Nm8-HeLvx_tHY38haeuaoF_IGTY4yvJ/edit?usp=sharing&ouid=105600632581689660298&rtpof=true&sd=true" target="_blank" class="p-3 bg-white border border-slate-200 rounded-xl text-orange-700 hover:bg-orange-50 transition flex items-center gap-2"><i class="fa-solid fa-file-powerpoint text-base"></i> PPT Implementasi UTS</a>
+              <a href="https://drive.google.com/file/d/1uSbPdQ74Ua8saxMlDGpLXhMHAZam-S3r/view?usp=sharing" target="_blank" class="p-3 bg-white border border-slate-200 rounded-xl text-blue-700 hover:bg-blue-50 transition flex items-center gap-2"><i class="fa-solid fa-file-pdf text-base"></i> RPP/RPM UTS</a>
+              <a href="https://drive.google.com/file/d/1lmddKaPeU2eTFkK2iW3A2Xv27tfeHHJr/view?usp=sharing" target="_blank" class="p-3 bg-white border border-slate-200 rounded-xl text-emerald-700 hover:bg-emerald-50 transition flex items-center gap-2"><i class="fa-solid fa-images text-base"></i> Dokumentasi UTS</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- UAS Panel Content -->
+        <div id="content-uas" class="exam-content hidden space-y-6">
+          <div class="bg-blue-50 border border-blue-200 p-6 rounded-2xl">
+            <h3 class="text-xl font-bold text-brand-950 mb-2 uppercase">LAPORAN PRAKTIK MENGAJAR UNGGULAN UAS (SIKLUS 1 MANDIRI)</h3>
+            <p class="text-sm text-brand-800 mb-4">Materi: Potensi, Pemanfaatan, dan Pelestarian SDA Indonesia</p>
+            
+            <a href="https://drive.google.com/file/d/1Jy7zga10BVXW584ra3WFP9rMiAOP9wcM/view?usp=sharing" target="_blank" class="inline-flex items-center gap-2 bg-brand-700 text-white px-5 py-3 rounded-xl hover:bg-brand-800 transition font-bold text-sm shadow-md">
+              <i class="fa-solid fa-circle-play text-lg"></i> Tonton Video Pembelajaran UAS di Google Drive
+            </a>
+          </div>
+
+          <!-- Artefak UAS -->
+          <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+            <h4 class="font-bold text-slate-800 mb-3">Artefak Perangkat Pembelajaran UAS</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-semibold">
+              <a href="https://docs.google.com/presentation/d/1baSpragEflhRkp41eNR5KYVX3tw6yHMC/edit?usp=sharing&ouid=105600632581689660298&rtpof=true&sd=true" target="_blank" class="p-3 bg-white border border-slate-200 rounded-xl text-orange-700 hover:bg-orange-50 transition flex items-center gap-2"><i class="fa-solid fa-file-powerpoint text-base"></i> PPT Implementasi UAS</a>
+              <a href="https://drive.google.com/file/d/1debFlM5o60pSBTsYiabl7dFopk_74v2z/view?usp=sharing" target="_blank" class="p-3 bg-white border border-slate-200 rounded-xl text-blue-700 hover:bg-blue-50 transition flex items-center gap-2"><i class="fa-solid fa-file-pdf text-base"></i> RPP/RPM UAS</a>
+              <a href="https://drive.google.com/file/d/11Rymo_TTD824kZjwjql4suBL9172JWx9/view?usp=sharing" target="_blank" class="p-3 bg-white border border-slate-200 rounded-xl text-emerald-700 hover:bg-emerald-50 transition flex items-center gap-2"><i class="fa-solid fa-images text-base"></i> Dokumentasi UAS</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 7. KEGIATAN NON-MENGAJAR ==================== -->
+    <section id="page-non-mengajar" class="page-section hidden py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-blue-100 space-y-8">
+        
+        <div class="bg-slate-900 text-white rounded-2xl p-6 sm:p-8">
+          <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">SMP Negeri 5 Yogyakarta</span>
+          <h2 class="text-3xl font-extrabold mt-1">Laporan Praktik Kegiatan Non-Mengajar</h2>
+          <div class="mt-4 text-xs text-slate-300 grid grid-cols-1 sm:grid-cols-2 gap-2 border-t border-slate-800 pt-4">
+            <div><strong>Mahasiswa:</strong> Patriot Jiwo Tri Rahman (NIM: 25105260451)</div>
+            <div><strong>Alokasi Waktu:</strong> 2,5 Jam / Minggu</div>
+          </div>
+        </div>
+
+        <!-- Rincian Pelaksanaan -->
+        <div class="space-y-6 text-slate-700">
+          <h3 class="text-2xl font-bold text-slate-800 border-b-2 border-brand-500 inline-block pb-1">I. Rincian Pelaksanaan Kegiatan Nonmengajar</h3>
+
+          <!-- Point 1 -->
+          <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
+            <h4 class="font-bold text-lg text-brand-900">1. Manajemen & Tata Kelola Sekolah (Piket Sekolah)</h4>
+            <p class="text-sm">Pelaksanaan piket sekolah dilakukan secara rutin sesuai jadwal harian:</p>
+            <ul class="list-disc pl-5 text-sm space-y-1">
+              <li><strong>Piket Salam Pagi:</strong> Menyambut kedatangan murid di gerbang sekolah dengan budaya 5S (Senyum, Sapa, Salam, Sopan, Santun).</li>
+              <li><strong>Piket Absensi:</strong> Merekap absensi presensi harian siswa, mendata keterlambatan, dan koordinasi dengan wali kelas.</li>
+              <li><strong>Piket Aula:</strong> Membantu penataan, pengawasan fasilitas, dan tata tertib saat aula digunakan untuk acara ibadah/kedinasan.</li>
+            </ul>
+          </div>
+
+          <!-- Point 2 Gold OSN -->
+          <div class="bg-gradient-to-r from-amber-50 to-orange-50 p-6 rounded-2xl border border-amber-200 space-y-3">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-trophy text-amber-500 text-3xl"></i>
+              <div>
+                <h4 class="font-bold text-lg text-amber-950">2. Pengelolaan Ekstrakurikuler & Pembimbingan OSN IPS</h4>
+                <p class="text-xs text-amber-800">Prestasi Pembimbingan Terstruktur Setiap Hari Kamis</p>
+              </div>
+            </div>
+            <div class="bg-white p-4 rounded-xl border border-amber-200 text-sm leading-relaxed text-slate-800 shadow-xs">
+              <strong class="text-amber-700 font-bold block mb-1">Hasil Capaian Prestasi Gemilang:</strong>
+              Melalui pembimbingan yang terstruktur dan konsisten, siswi bimbingan kami atas nama <strong class="text-slate-900">Salsabila Yusrina Eljaudah</strong> berhasil mencapai prestasi yang sangat membanggakan dengan meraih <span class="bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded border border-amber-300">MEDALI EMAS OSN IPS Tingkat Nasional Tahun 2026</span> yang diselenggarakan oleh Kementerian Pendidikan Dasar dan Menengah (Kemendikdasmen).
+            </div>
+          </div>
+
+          <!-- Point 3 -->
+          <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
+            <h4 class="font-bold text-lg text-brand-900">3. Partisipasi Kegiatan Kemasyarakatan, Keagamaan, & Kebudayaan</h4>
+            <ul class="list-disc pl-5 text-sm space-y-1">
+              <li><strong>Peringatan HUT Kemerdekaan RI:</strong> Panitia pelaksana lomba edukatif dan pendampingan siswa.</li>
+              <li><strong>Pengajian Maulid Nabi:</strong> Mendampingi pengajian Maulid Nabi Muhammad SAW demi penguatan spiritual.</li>
+              <li><strong>Karnaval 270 Tahun Kota Jogja:</strong> Kepanitiaan dan pendamping kontingen sekolah menyemarakkan karnaval kota.</li>
+            </ul>
+          </div>
+
+          <!-- Point 4 -->
+          <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
+            <h4 class="font-bold text-lg text-brand-900">4. Pengawasan Asesmen Kendali Mutu (AKM)</h4>
+            <p class="text-sm">Pengawas Asesmen Kendali Mutu (AKM) Semester Ganjil Tahun Ajaran 2026/2027 meliputi pengondisian ruang ujian, pembacaan tata tertib, berita acara, dan pengawasan ketertiban.</p>
+          </div>
+
+          <!-- Section II -->
+          <div class="pt-4 space-y-4">
+            <h3 class="text-2xl font-bold text-slate-800 border-b-2 border-brand-500 inline-block pb-1">II. Diskusi, Evaluasi, dan Refleksi</h3>
+            <p class="text-sm">Pelaksanaan kegiatan nonmengajar memberikan pengalaman langsung dalam memahami dinamika ekosistem sekolah secara utuh.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                <strong>Evaluasi:</strong> Manajemen waktu 2,5 jam per minggu terlaksana efektif melalui penjadwalan terstruktur.
+              </div>
+              <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                <strong>Refleksi:</strong> Keberhasilan pembimbingan OSN IPS membuktikan pentingnya komitmen dan metode bimbingan terarah.
+              </div>
+            </div>
+
+            <blockquote class="bg-slate-100 border-l-4 border-slate-700 p-4 rounded-r-xl text-xs italic text-slate-700">
+              <strong>Catatan Refleksi Diri:</strong><br>
+              "Keterlibatan dalam kegiatan nonmengajar membuka wawasan bahwa peran seorang pendidik tidak terbatas di dalam ruang kelas semata. Menyambut siswa di pagi hari, mendampingi kompetensi bakat hingga juara nasional, serta berbaur dalam kegiatan budaya dan keagamaan merupakan fondasi penting dalam membangun hubungan emosional yang positif antara guru, siswa, dan warga sekolah."
+            </blockquote>
+          </div>
+
+          <!-- Section III Dokumen -->
+          <div class="pt-6">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 border-b-2 border-brand-500 inline-block pb-1">III. Dokumentasi Kegiatan Non-Mengajar</h3>
+            
+            <div class="p-6 bg-gradient-to-r from-blue-700 to-indigo-800 text-white rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg">
+              <div>
+                <h4 class="font-bold text-lg">Dokumen Lengkap Kegiatan Non-Mengajar</h4>
+                <p class="text-xs text-blue-200">Akses laporan foto dan dokumentasi terpadu di Google Drive</p>
+              </div>
+              <a href="https://drive.google.com/file/d/155rQG0ooF2xLbAyvp77P-EyE4hquAttt/view?usp=sharing" target="_blank" class="bg-white text-brand-900 px-6 py-3 rounded-xl font-bold text-sm hover:bg-blue-50 transition shadow-md whitespace-nowrap">
+                <i class="fa-solid fa-file-arrow-down mr-2"></i> Buka Dokumentasi Drive
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-white border-t border-slate-800 py-8 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+      <div>
+        <p class="font-bold text-base">Patriot Jiwo Tri Rahman, S.Pd.</p>
+        <p class="text-xs text-slate-400">Portofolio PPG Calon Guru Ilmu Pengetahuan Sosial — UNY 2026</p>
+      </div>
+      <div class="text-xs text-slate-500">
+        &copy; 2026 PPG IPS Universitas Negeri Yogyakarta — PPL SMPN 5 Yogyakarta.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT FOR NAVIGATION AND INTERACTION -->
+  <script>
+    // Page Navigation Handler
+    function navigateTo(pageId) {
+      // Hide all pages
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.add('hidden');
+      });
+
+      // Show selected page
+      const targetPage = document.getElementById('page-' + pageId);
+      if (targetPage) {
+        targetPage.classList.remove('hidden');
+      }
+
+      // Update Navigation Link Styles
+      document.querySelectorAll('.nav-link').forEach(btn => {
+        btn.classList.remove('bg-brand-700', 'text-white');
+        btn.classList.add('text-slate-700');
+      });
+
+      const activeNav = document.getElementById('nav-' + pageId);
+      if (activeNav) {
+        activeNav.classList.add('bg-brand-700', 'text-white');
+        activeNav.classList.remove('text-slate-700');
+      }
+
+      // Close Mobile Menu if open
+      document.getElementById('mobile-menu').classList.add('hidden');
+
+      // Scroll to Top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Render chart if navigating to refleksi
+      if(pageId === 'refleksi') {
+        renderChart();
+      }
+    }
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Siklus Tab Switcher in Pembelajaran
+    function switchSiklus(siklusId) {
+      document.querySelectorAll('.siklus-content').forEach(content => {
+        content.classList.add('hidden');
+      });
+      document.querySelectorAll('.siklus-tab').forEach(btn => {
+        btn.classList.remove('active', 'bg-brand-500', 'text-white');
+        btn.classList.add('bg-slate-100', 'text-slate-700');
+      });
+
+      document.getElementById('content-' + siklusId).classList.remove('hidden');
+      const activeBtn = document.getElementById('btn-' + siklusId);
+      activeBtn.classList.add('active');
+      activeBtn.classList.remove('bg-slate-100', 'text-slate-700');
+    }
+
+    // Exam Tab Switcher in UTS/UAS
+    function switchExam(examId) {
+      document.querySelectorAll('.exam-content').forEach(content => {
+        content.classList.add('hidden');
+      });
+      document.querySelectorAll('.exam-tab').forEach(btn => {
+        btn.classList.remove('active');
+        btn.classList.add('bg-slate-100', 'text-slate-700');
+      });
+
+      document.getElementById('content-' + examId).classList.remove('hidden');
+      const activeBtn = document.getElementById('btn-' + examId);
+      activeBtn.classList.add('active');
+      activeBtn.classList.remove('bg-slate-100', 'text-slate-700');
+    }
+
+    // Chart.js Evaluation Progress Graph
+    let chartInstance = null;
+    function renderChart() {
+      const ctx = document.getElementById('scoreChart');
+      if (!ctx) return;
+
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+
+      chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Siklus 1 Terbimbing', 'Siklus 1 Mandiri', 'Siklus 2 Mandiri', 'Siklus 3 Mandiri', 'Siklus 4 Mandiri'],
+          datasets: [{
+            label: 'Nilai Evaluasi Praktik Mengajar',
+            data: [85, 87.5, 90, 92.5, 95],
+            borderColor: '#1d4ed8',
+            backgroundColor: 'rgba(59, 130, 246, 0.15)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.3,
+            pointBackgroundColor: '#1e40af',
+            pointRadius: 6,
+            pointHoverRadius: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              min: 80,
+              max: 100,
+              ticks: { stepSize: 5 }
+            }
+          },
+          plugins: {
+            legend: {
+              display: true,
+              position: 'bottom'
+            }
+          }
         }
+      });
+    }
 
-        function showSubTab(tabId, btn) {
-            let parent = btn.parentElement.parentElement;
-            parent.querySelectorAll('.sub-tab-content').forEach(content => {
-                content.style.display = 'none';
-            });
-            parent.querySelectorAll('.tab-btn').forEach(b => {
-                b.classList.remove('active');
-            });
-
-            document.getElementById(tabId).style.display = 'block';
-            btn.classList.add('active');
-        }
-
-        // Render Chart js for grades
-        window.onload = function() {
-            const ctx = document.getElementById('scoreChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Siklus 1 Terbimbing', 'Siklus 1 Mandiri', 'Siklus 2 Mandiri', 'Siklus 3 Mandiri', 'Siklus 4 Mandiri'],
-                    datasets: [{
-                        label: 'Nilai Praktik Mengajar',
-                        data: [85, 87.5, 90, 92.5, 95],
-                        borderColor: '#0056b3',
-                        backgroundColor: 'rgba(0, 86, 179, 0.1)',
-                        fill: true,
-                        tension: 0.3,
-                        pointRadius: 6,
-                        pointBackgroundColor: '#00a8ff'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: { min: 80, max: 100 }
-                    }
-                }
-            });
-        };
-    </script>
+    // Default initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      navigateTo('beranda');
+    });
+  </script>
 </body>
 </html>
